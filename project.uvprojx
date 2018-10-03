@@ -387,39 +387,24 @@
               <FilePath>.\main.c</FilePath>
             </File>
             <File>
-              <FileName>startup_stm32l476xx.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\startup_stm32l476xx.s</FilePath>
+              <FileName>pins.txt</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\pins.txt</FilePath>
             </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Drivers</GroupName>
+          <Files>
             <File>
               <FileName>stm32l476xx.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\stm32l476xx.h</FilePath>
             </File>
             <File>
-              <FileName>pins.txt</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\pins.txt</FilePath>
-            </File>
-            <File>
-              <FileName>LED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Drivers\LED.c</FilePath>
-            </File>
-            <File>
-              <FileName>SysClock.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Drivers\SysClock.c</FilePath>
-            </File>
-            <File>
-              <FileName>UART.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Drivers\UART.c</FilePath>
-            </File>
-            <File>
-              <FileName>input_pa1.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Drivers\input_pa1.c</FilePath>
+              <FileName>startup_stm32l476xx.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\startup_stm32l476xx.s</FilePath>
             </File>
             <File>
               <FileName>input_pa1.h</FileName>
@@ -427,14 +412,54 @@
               <FilePath>.\Drivers\input_pa1.h</FilePath>
             </File>
             <File>
-              <FileName>timer.c</FileName>
+              <FileName>input_pa1.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Drivers\timer.c</FilePath>
+              <FilePath>.\Drivers\input_pa1.c</FilePath>
             </File>
             <File>
-              <FileName>timer.h</FileName>
+              <FileName>UART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Drivers\UART.c</FilePath>
+            </File>
+            <File>
+              <FileName>SysClock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Drivers\SysClock.c</FilePath>
+            </File>
+            <File>
+              <FileName>LED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Drivers\LED.c</FilePath>
+            </File>
+            <File>
+              <FileName>pa6_config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Drivers\pa6_config.c</FilePath>
+            </File>
+            <File>
+              <FileName>pa6_config.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Drivers\timer.h</FilePath>
+              <FilePath>.\Drivers\pa6_config.h</FilePath>
+            </File>
+            <File>
+              <FileName>tim2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Drivers\tim2.h</FilePath>
+            </File>
+            <File>
+              <FileName>tim3.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Drivers\tim3.h</FilePath>
+            </File>
+            <File>
+              <FileName>tim2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Drivers\tim2.c</FilePath>
+            </File>
+            <File>
+              <FileName>tim3.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Drivers\tim3.c</FilePath>
             </File>
           </Files>
         </Group>

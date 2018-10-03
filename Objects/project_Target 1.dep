@@ -16,11 +16,12 @@ I (Drivers/input_pa1.h)(0x5BA7E98D)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599F75EC)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599F75EC)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F75EC)
-F (.\startup_stm32l476xx.s)(0x566B7336)(--cpu Cortex-M4.fp --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Device\Include--pd "__UVISION_VERSION SETA 525" --pd "_RTE_ SETA 1" --pd "STM32L476xx SETA 1"--list .\listings\startup_stm32l476xx.lst --xref -o .\objects\startup_stm32l476xx.o --depend .\objects\startup_stm32l476xx.d)
-F (.\stm32l476xx.h)(0x566B7336)()
 F (.\pins.txt)(0x56EDA51E)()
-F (.\Drivers\LED.c)(0x5682B152)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\Drivers\CMSIS\Include --c99 -D__MICROLIB-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L476xx-o .\objects\led.o --omf_browse .\objects\led.crf --depend .\objects\led.d)
-I (Drivers\LED.h)(0x566B7336)
+F (.\stm32l476xx.h)(0x566B7336)()
+F (.\startup_stm32l476xx.s)(0x566B7336)(--cpu Cortex-M4.fp --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Device\Include--pd "__UVISION_VERSION SETA 525" --pd "_RTE_ SETA 1" --pd "STM32L476xx SETA 1"--list .\listings\startup_stm32l476xx.lst --xref -o .\objects\startup_stm32l476xx.o --depend .\objects\startup_stm32l476xx.d)
+F (.\Drivers\timer.h)(0x5BA82E66)()
+F (.\Drivers\timer.c)(0x5BA8399F)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\Drivers\CMSIS\Include --c99 -D__MICROLIB-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L476xx-o .\objects\timer.o --omf_browse .\objects\timer.crf --depend .\objects\timer.d)
+I (Drivers\timer.h)(0x5BA82E66)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include\stm32l476xx.h)(0x59A08736)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\core_cm4.h)(0x5B621944)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F75EE)
@@ -29,8 +30,10 @@ I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5B
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5B621944)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\mpu_armv7.h)(0x5B621944)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include\system_stm32l4xx.h)(0x59A08736)
-F (.\Drivers\SysClock.c)(0x566B7336)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\Drivers\CMSIS\Include --c99 -D__MICROLIB-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L476xx-o .\objects\sysclock.o --omf_browse .\objects\sysclock.crf --depend .\objects\sysclock.d)
-I (Drivers\SysClock.h)(0x566B7336)
+I (Drivers\input_pa1.h)(0x5BA7E98D)
+F (.\Drivers\input_pa1.h)(0x5BA7E98D)()
+F (.\Drivers\input_pa1.c)(0x5BA82CAC)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\Drivers\CMSIS\Include --c99 -D__MICROLIB-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L476xx-o .\objects\input_pa1.o --omf_browse .\objects\input_pa1.crf --depend .\objects\input_pa1.d)
+I (Drivers\input_pa1.h)(0x5BA7E98D)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include\stm32l476xx.h)(0x59A08736)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\core_cm4.h)(0x5B621944)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F75EE)
@@ -49,8 +52,8 @@ I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5B
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5B621944)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\mpu_armv7.h)(0x5B621944)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include\system_stm32l4xx.h)(0x59A08736)
-F (.\Drivers\input_pa1.c)(0x5BA82CAC)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\Drivers\CMSIS\Include --c99 -D__MICROLIB-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L476xx-o .\objects\input_pa1.o --omf_browse .\objects\input_pa1.crf --depend .\objects\input_pa1.d)
-I (Drivers\input_pa1.h)(0x5BA7E98D)
+F (.\Drivers\SysClock.c)(0x566B7336)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\Drivers\CMSIS\Include --c99 -D__MICROLIB-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L476xx-o .\objects\sysclock.o --omf_browse .\objects\sysclock.crf --depend .\objects\sysclock.d)
+I (Drivers\SysClock.h)(0x566B7336)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include\stm32l476xx.h)(0x59A08736)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\core_cm4.h)(0x5B621944)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F75EE)
@@ -59,9 +62,8 @@ I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5B
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5B621944)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\mpu_armv7.h)(0x5B621944)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include\system_stm32l4xx.h)(0x59A08736)
-F (.\Drivers\input_pa1.h)(0x5BA7E98D)()
-F (.\Drivers\timer.c)(0x5BA8399F)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\Drivers\CMSIS\Include --c99 -D__MICROLIB-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L476xx-o .\objects\timer.o --omf_browse .\objects\timer.crf --depend .\objects\timer.d)
-I (Drivers\timer.h)(0x5BA82E66)
+F (.\Drivers\LED.c)(0x5682B152)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\Drivers\CMSIS\Include --c99 -D__MICROLIB-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Device\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32L476xx-o .\objects\led.o --omf_browse .\objects\led.crf --depend .\objects\led.d)
+I (Drivers\LED.h)(0x566B7336)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include\stm32l476xx.h)(0x59A08736)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\core_cm4.h)(0x5B621944)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F75EE)
@@ -70,5 +72,3 @@ I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5B
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5B621944)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include\mpu_armv7.h)(0x5B621944)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include\system_stm32l4xx.h)(0x59A08736)
-I (Drivers\input_pa1.h)(0x5BA7E98D)
-F (.\Drivers\timer.h)(0x5BA82E66)()

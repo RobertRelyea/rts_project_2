@@ -43,10 +43,10 @@ Section Cross References
     startup_stm32l476xx.o(.text) refers to __main.o(!!!main) for __main
     startup_stm32l476xx.o(.text) refers to startup_stm32l476xx.o(HEAP) for Heap_Mem
     startup_stm32l476xx.o(.text) refers to startup_stm32l476xx.o(STACK) for Stack_Mem
+    timer.o(i.timer_init) refers to input_pa1.o(i.init_pa1_timer) for init_pa1_timer
     uart.o(i.UART2_Init) refers to uart.o(i.UART2_GPIO_Init) for UART2_GPIO_Init
     uart.o(i.UART2_Init) refers to uart.o(i.USART_Init) for USART_Init
     uart.o(i.USART_Write) refers to uart.o(i.USART_Delay) for USART_Delay
-    timer.o(i.timer_init) refers to input_pa1.o(i.init_pa1_timer) for init_pa1_timer
     __2sprintf.o(.text) refers to _printf_char_common.o(.text) for _printf_char_common
     __2sprintf.o(.text) refers to _sputc.o(.text) for _sputc
     noretval__2sprintf.o(.text) refers to _printf_char_common.o(.text) for _printf_char_common
@@ -198,6 +198,19 @@ Removing Unused input sections from the image.
     Removing main.o(.rev16_text), (4 bytes).
     Removing main.o(.revsh_text), (4 bytes).
     Removing main.o(.rrx_text), (6 bytes).
+    Removing timer.o(.rev16_text), (4 bytes).
+    Removing timer.o(.revsh_text), (4 bytes).
+    Removing timer.o(.rrx_text), (6 bytes).
+    Removing input_pa1.o(.rev16_text), (4 bytes).
+    Removing input_pa1.o(.revsh_text), (4 bytes).
+    Removing input_pa1.o(.rrx_text), (6 bytes).
+    Removing uart.o(.rev16_text), (4 bytes).
+    Removing uart.o(.revsh_text), (4 bytes).
+    Removing uart.o(.rrx_text), (6 bytes).
+    Removing uart.o(i.USART_IRQHandler), (92 bytes).
+    Removing sysclock.o(.rev16_text), (4 bytes).
+    Removing sysclock.o(.revsh_text), (4 bytes).
+    Removing sysclock.o(.rrx_text), (6 bytes).
     Removing led.o(.rev16_text), (4 bytes).
     Removing led.o(.revsh_text), (4 bytes).
     Removing led.o(.rrx_text), (6 bytes).
@@ -208,19 +221,6 @@ Removing Unused input sections from the image.
     Removing led.o(i.Red_LED_Off), (20 bytes).
     Removing led.o(i.Red_LED_On), (20 bytes).
     Removing led.o(i.Red_LED_Toggle), (20 bytes).
-    Removing sysclock.o(.rev16_text), (4 bytes).
-    Removing sysclock.o(.revsh_text), (4 bytes).
-    Removing sysclock.o(.rrx_text), (6 bytes).
-    Removing uart.o(.rev16_text), (4 bytes).
-    Removing uart.o(.revsh_text), (4 bytes).
-    Removing uart.o(.rrx_text), (6 bytes).
-    Removing uart.o(i.USART_IRQHandler), (92 bytes).
-    Removing input_pa1.o(.rev16_text), (4 bytes).
-    Removing input_pa1.o(.revsh_text), (4 bytes).
-    Removing input_pa1.o(.rrx_text), (6 bytes).
-    Removing timer.o(.rev16_text), (4 bytes).
-    Removing timer.o(.revsh_text), (4 bytes).
-    Removing timer.o(.rrx_text), (6 bytes).
 
 26 unused section(s) (total 452 bytes) removed from the image.
 
@@ -804,25 +804,25 @@ Memory Map of the image
     0x080007b0   0x080007b0   0x00000002   Code   RO          521    .text               c_w.l(use_no_semi.o)
     0x080007b2   0x080007b2   0x00000000   Code   RO          523    .text               c_w.l(indicate_semi.o)
     0x080007b2   0x080007b2   0x00000002   PAD
-    0x080007b4   0x080007b4   0x00000184   Code   RO          178    i.System_Clock_Init  sysclock.o
-    0x08000938   0x08000938   0x00000074   Code   RO          205    i.UART2_GPIO_Init   uart.o
-    0x080009ac   0x080009ac   0x00000040   Code   RO          206    i.UART2_Init        uart.o
-    0x080009ec   0x080009ec   0x00000014   Code   RO          207    i.USART_Delay       uart.o
-    0x08000a00   0x08000a00   0x000000b4   Code   RO          209    i.USART_Init        uart.o
-    0x08000ab4   0x08000ab4   0x00000014   Code   RO          210    i.USART_Read        uart.o
-    0x08000ac8   0x08000ac8   0x00000040   Code   RO          211    i.USART_Write       uart.o
+    0x080007b4   0x080007b4   0x00000184   Code   RO          262    i.System_Clock_Init  sysclock.o
+    0x08000938   0x08000938   0x00000074   Code   RO          199    i.UART2_GPIO_Init   uart.o
+    0x080009ac   0x080009ac   0x00000040   Code   RO          200    i.UART2_Init        uart.o
+    0x080009ec   0x080009ec   0x00000014   Code   RO          201    i.USART_Delay       uart.o
+    0x08000a00   0x08000a00   0x000000b4   Code   RO          203    i.USART_Init        uart.o
+    0x08000ab4   0x08000ab4   0x00000014   Code   RO          204    i.USART_Read        uart.o
+    0x08000ac8   0x08000ac8   0x00000040   Code   RO          205    i.USART_Write       uart.o
     0x08000b08   0x08000b08   0x00000020   Code   RO            4    i.getChar           main.o
     0x08000b28   0x08000b28   0x00000078   Code   RO            5    i.getInt            main.o
-    0x08000ba0   0x08000ba0   0x00000040   Code   RO          268    i.init_pa1_timer    input_pa1.o
+    0x08000ba0   0x08000ba0   0x00000040   Code   RO          175    i.init_pa1_timer    input_pa1.o
     0x08000be0   0x08000be0   0x00000362   Code   RO            6    i.main              main.o
     0x08000f42   0x08000f42   0x00000002   PAD
     0x08000f44   0x08000f44   0x00000054   Code   RO            7    i.post              main.o
-    0x08000f98   0x08000f98   0x00000008   Code   RO          295    i.timer_capture     timer.o
-    0x08000fa0   0x08000fa0   0x00000008   Code   RO          296    i.timer_count       timer.o
-    0x08000fa8   0x08000fa8   0x0000000c   Code   RO          297    i.timer_event       timer.o
-    0x08000fb4   0x08000fb4   0x0000005c   Code   RO          298    i.timer_init        timer.o
-    0x08001010   0x08001010   0x00000012   Code   RO          299    i.timer_start       timer.o
-    0x08001022   0x08001022   0x0000000e   Code   RO          300    i.timer_stop        timer.o
+    0x08000f98   0x08000f98   0x00000008   Code   RO          108    i.timer_capture     timer.o
+    0x08000fa0   0x08000fa0   0x00000008   Code   RO          109    i.timer_count       timer.o
+    0x08000fa8   0x08000fa8   0x0000000c   Code   RO          110    i.timer_event       timer.o
+    0x08000fb4   0x08000fb4   0x0000005c   Code   RO          111    i.timer_init        timer.o
+    0x08001010   0x08001010   0x00000012   Code   RO          112    i.timer_start       timer.o
+    0x08001022   0x08001022   0x0000000e   Code   RO          113    i.timer_stop        timer.o
     0x08001030   0x08001030   0x0000002c   Code   RO          440    locale$$code        c_w.l(lc_ctype_c.o)
     0x0800105c   0x0800105c   0x0000000a   Code   RO          508    x$fpl$fpinit        fz_wm.l(fpinit.o)
     0x08001066   0x08001066   0x00000002   PAD
@@ -850,11 +850,10 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
         64          4          0          0          0        445   input_pa1.o
-         0          0          0          0          0     655684   led.o
       1102        350          0         12         64       8258   main.o
        132         42        392          0       1536        808   startup_stm32l476xx.o
        388          8          0          0          0        612   sysclock.o
-       152          6          0          0          0       2624   timer.o
+       152          6          0          0          0     658308   timer.o
        464         32          0          0          0       3309   uart.o
 
     ----------------------------------------------------------------------
