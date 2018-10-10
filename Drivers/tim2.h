@@ -6,7 +6,7 @@
 
 // Sets up the TIM2 registers for Channel 2 on PA1
 void timer_init(void);
-
+void timer2_pwm();
 void timer_start(void);
 
 void timer_stop(void);
@@ -16,6 +16,6 @@ uint32_t timer_count(void);
 uint32_t timer_capture(void);
 
 uint32_t timer_event(void);
-
+void dutycycle(int dc);
 
 #endif

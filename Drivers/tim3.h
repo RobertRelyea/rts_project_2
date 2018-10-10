@@ -17,5 +17,4 @@ uint32_t timer3_capture(void);
 
 uint32_t timer3_event(void);
 
-
 #endif
