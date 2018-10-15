@@ -442,24 +442,14 @@
               <FilePath>.\Drivers\pa6_config.h</FilePath>
             </File>
             <File>
-              <FileName>tim2.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Drivers\tim2.h</FilePath>
-            </File>
-            <File>
-              <FileName>tim3.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Drivers\tim3.h</FilePath>
-            </File>
-            <File>
-              <FileName>tim2.c</FileName>
+              <FileName>tim4.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Drivers\tim2.c</FilePath>
+              <FilePath>.\Drivers\tim4.c</FilePath>
             </File>
             <File>
-              <FileName>tim3.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Drivers\tim3.c</FilePath>
+              <FileName>tim4.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Drivers\tim4.h</FilePath>
             </File>
           </Files>
         </Group>

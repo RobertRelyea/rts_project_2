@@ -438,12 +438,12 @@
     <File>
       <GroupNumber>2</GroupNumber>
       <FileNumber>12</FileNumber>
-      <FileType>5</FileType>
+      <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\Drivers\tim2.h</PathWithFileName>
-      <FilenameWithoutPath>tim2.h</FilenameWithoutPath>
+      <PathWithFileName>.\Drivers\tim4.c</PathWithFileName>
+      <FilenameWithoutPath>tim4.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -454,32 +454,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\Drivers\tim3.h</PathWithFileName>
-      <FilenameWithoutPath>tim3.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>14</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Drivers\tim2.c</PathWithFileName>
-      <FilenameWithoutPath>tim2.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>2</GroupNumber>
-      <FileNumber>15</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Drivers\tim3.c</PathWithFileName>
-      <FilenameWithoutPath>tim3.c</FilenameWithoutPath>
+      <PathWithFileName>.\Drivers\tim4.h</PathWithFileName>
+      <FilenameWithoutPath>tim4.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
