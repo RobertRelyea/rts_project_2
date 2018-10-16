@@ -4,7 +4,7 @@ void timer4_init()
 {
 	RCC->AHB2ENR |= RCC_AHB2ENR_GPIOBEN;
 	//GPIOB-> MODER &= ~(0x300);  
-	GPIOB-> MODER &= ~(0x03 << (2*6));         //clearing out 0 and 1 bit for pa0	
+	GPIOB-> MODER &= ~(0x03 << (2*6));         	
 	
 	//GPIOB-> MODER |= 0x01 << (2*6);
 	GPIOB-> MODER |= 0x02 << (2*6);
@@ -13,6 +13,7 @@ void timer4_init()
 	RCC->APB1ENR1 |= RCC_APB1ENR1_TIM4EN; 
 	TIM4->PSC = 0x1F3F; 
 	TIM4->EGR |= TIM_EGR_UG;
+	
 	TIM4->CCER &= ~(TIM_CCER_CC1E);
 	TIM4->CCMR1 |= TIM_CCMR1_OC1M_1 | TIM_CCMR1_OC1M_2;
 	TIM4->CCMR1 &= ~(TIM_CCMR1_OC1M_0);
@@ -24,6 +25,22 @@ void timer4_init()
 	TIM4->EGR |= TIM_EGR_UG;
 	TIM4->CCR1 = 150;
 	TIM4->CR1 |= TIM_CR1_CEN;
+	
+	TIM4->CCER &= ~(TIM_CCER_CC2E);
+	TIM4->CCMR1 |= TIM_CCMR1_OC1M_1 | TIM_CCMR1_OC1M_2;
+	TIM4->CCMR1 &= ~(TIM_CCMR1_OC1M_0);
+	TIM4->CCMR1 |= TIM_CCMR1_OC1PE;
+	TIM4->CR1 |= TIM_CR1_ARPE;
+	TIM4->CCER |= TIM_CCER_CC1E;
+	TIM4->CCER &= ~(TIM_CCER_CC1P);
+	TIM4->ARR = 200;
+	TIM4->EGR |= TIM_EGR_UG;
+	TIM4->CCR1 = 150;
+	TIM4->CR1 |= TIM_CR1_CEN;
+	
+	
+	
+	
 }
 
 /*
