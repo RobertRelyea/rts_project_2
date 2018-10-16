@@ -2,46 +2,62 @@
 
 void timer4_init()
 {
+	
+	//PB6 CH1 AF2
 	RCC->AHB2ENR |= RCC_AHB2ENR_GPIOBEN;
 	//GPIOB-> MODER &= ~(0x300);  
-	GPIOB-> MODER &= ~(0x03 << (2*6));         	
+	GPIOB-> MODER &= ~(0x03 << (2*6));  //clearing out 0 and 1 bit for pb6  
+	GPIOB-> MODER |= 0x02 << (2*6);     //selecting AF mode for PB6
 	
-	//GPIOB-> MODER |= 0x01 << (2*6);
-	GPIOB-> MODER |= 0x02 << (2*6);
-	GPIOB->AFR[0] &= ~(0x0F << (4*6));
-	GPIOB->AFR[0] |= (0x02 << (4*6));
-	RCC->APB1ENR1 |= RCC_APB1ENR1_TIM4EN; 
+	GPIOB-> MODER &= ~(0x03 << (2*7));  //clearing out 0 and 1 bit for pb7
+	GPIOB-> MODER |= 0x02 << (2*7);      //selecting AF mode for PB7
+	
+	GPIOB->AFR[0] &= ~(0x0F << (4*6));  // clearing afr for timer 4 PB6
+	GPIOB->AFR[0] |= (0x02 << (4*6));   //setting AF2 for PB6
+	
+	GPIOB->AFR[0] &= ~(0x0F << (4*7));  // clearing afr for timer 4 PB7
+	GPIOB->AFR[0] |= (0x02 << (4*7));   //setting AF2 for PB7
+	
+	RCC->APB1ENR1 |= RCC_APB1ENR1_TIM4EN;   //Enable clock
 	TIM4->PSC = 0x1F3F; 
 	TIM4->EGR |= TIM_EGR_UG;
 	
-	TIM4->CCER &= ~(TIM_CCER_CC1E);
-	TIM4->CCMR1 |= TIM_CCMR1_OC1M_1 | TIM_CCMR1_OC1M_2;
+	TIM4->CCER &= ~(TIM_CCER_CC1E);     // Clear output enable for capture input channel 1
+  TIM4->CCER &=	~(TIM_CCER_CC2E);     // Clear output enable for capture input channel 2
+	
+	TIM4->CCMR1 |= TIM_CCMR1_OC1M_1 | TIM_CCMR1_OC1M_2;   //Select PWM as mode 1 for PB6 CH1
 	TIM4->CCMR1 &= ~(TIM_CCMR1_OC1M_0);
-	TIM4->CCMR1 |= TIM_CCMR1_OC1PE;
-	TIM4->CR1 |= TIM_CR1_ARPE;
-	TIM4->CCER |= TIM_CCER_CC1E;
-	TIM4->CCER &= ~(TIM_CCER_CC1P);
-	TIM4->ARR = 200;
-	TIM4->EGR |= TIM_EGR_UG;
-	TIM4->CCR1 = 150;
+	TIM4->CCMR1 |= TIM_CCMR1_OC2M_1 | TIM_CCMR1_OC2M_2;   //Select PWM as mode 1 for PB7 CH2
+	TIM4->CCMR1 &= ~(TIM_CCMR1_OC2M_0);
+	
+	
+	TIM4->CCMR1 |= TIM_CCMR1_OC1PE;  //enable the corresponding preload register by setting the OC1PE bit in the TIM4_CCMR1 register
+	TIM4->CCMR1 |= TIM_CCMR1_OC2PE;  //enable the corresponding preload register by setting the OC2PE bit in the TIM4_CCMR1 register
+	
+	TIM4->CR1 |= TIM_CR1_ARPE;       //auto-reload preload register
+	
+	TIM4->CCER |= TIM_CCER_CC1E;    // Turn on output enable for capture input channel 1
+	TIM4->CCER |= TIM_CCER_CC2E;    // Turn on output enable for capture input channel 2
+	
+	TIM4->CCER &= ~(TIM_CCER_CC1P);  //set to active high
+	TIM4->CCER &= ~(TIM_CCER_CC2P);  //set to active high
+	
+	TIM4->ARR = 200; 
+	TIM4->EGR |= TIM_EGR_UG;         //set UG bit in EGR register for force update
+	
+	TIM4->CCR1 = 150;               //setting counter compare value for channel 1
+	TIM4->CCR2 = 150;                //setting counter compare value for channel 2
+	
 	TIM4->CR1 |= TIM_CR1_CEN;
 	
-	TIM4->CCER &= ~(TIM_CCER_CC2E);
-	TIM4->CCMR1 |= TIM_CCMR1_OC1M_1 | TIM_CCMR1_OC1M_2;
-	TIM4->CCMR1 &= ~(TIM_CCMR1_OC1M_0);
-	TIM4->CCMR1 |= TIM_CCMR1_OC1PE;
-	TIM4->CR1 |= TIM_CR1_ARPE;
-	TIM4->CCER |= TIM_CCER_CC1E;
-	TIM4->CCER &= ~(TIM_CCER_CC1P);
-	TIM4->ARR = 200;
-	TIM4->EGR |= TIM_EGR_UG;
-	TIM4->CCR1 = 150;
-	TIM4->CR1 |= TIM_CR1_CEN;
-	
-	
-	
+
+
 	
 }
+	
+	
+	
+
 
 /*
 void timer3_init()
