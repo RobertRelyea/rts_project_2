@@ -5,10 +5,12 @@
 
 
 // Define all of the commands that are valid
-#define MOV 				(0x20)
-#define WAIT 				(0x40)
-#define LOOP				(0x80)
-#define END_LOOP 		(0xA0)
+#define MOV         (0x20)
+#define WAIT        (0x40)
+#define LOOP        (0x80)
+#define END_LOOP    (0xA0)
+#define CUST_ONE    (0xB0) // TODO
+#define CUST_TWO    (0xC0) // TODO
 #define RECIPE_END 	(0)
 
 // Examples of simple recipes
@@ -47,13 +49,14 @@ enum servo_states
 // More events are needed.
 enum events
 {
-	user_entered_left,
+	move_left,
+	move_right,
 	recipe_ended
 };
 
 // Define a "global" state value that is only accessible in one .c module (static makes it "private").
 // Define the initial state as paused.
-static enum servo_states current_servo_state = state_unknown;
+static enum servo_states servo_one_state = state_unknown;
 
 
 #endif
