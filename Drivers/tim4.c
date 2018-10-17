@@ -3,9 +3,11 @@
 void timer4_init()
 {
 	
-	//PB6 CH1 AF2
+	
 	RCC->AHB2ENR |= RCC_AHB2ENR_GPIOBEN;
-	//GPIOB-> MODER &= ~(0x300);  
+	
+	
+	
 	GPIOB-> MODER &= ~(0x03 << (2*6));  //clearing out 0 and 1 bit for pb6  
 	GPIOB-> MODER |= 0x02 << (2*6);     //selecting AF mode for PB6
 	
@@ -18,8 +20,12 @@ void timer4_init()
 	GPIOB->AFR[0] &= ~(0x0F << (4*7));  // clearing afr for timer 4 PB7
 	GPIOB->AFR[0] |= (0x02 << (4*7));   //setting AF2 for PB7
 	
-	RCC->APB1ENR1 |= RCC_APB1ENR1_TIM4EN;   //Enable clock
-	TIM4->PSC = 0x1F3F; 
+	
+	// Enable TIM4 in the APB1 clock enable register 1
+	RCC->APB1ENR1 |= RCC_APB1ENR1_TIM4EN;   
+	
+	
+	TIM4->PSC = 0x1F3F;                 // Set prescaler value for TIM4
 	TIM4->EGR |= TIM_EGR_UG;
 	
 	TIM4->CCER &= ~(TIM_CCER_CC1E);     // Clear output enable for capture input channel 1
@@ -42,20 +48,48 @@ void timer4_init()
 	TIM4->CCER &= ~(TIM_CCER_CC1P);  //set to active high
 	TIM4->CCER &= ~(TIM_CCER_CC2P);  //set to active high
 	
-	TIM4->ARR = 200; 
+	TIM4->ARR = 200;                 // Upcounting from 0 to 199
 	TIM4->EGR |= TIM_EGR_UG;         //set UG bit in EGR register for force update
 	
-	TIM4->CCR1 = 150;               //setting counter compare value for channel 1
-	TIM4->CCR2 = 150;                //setting counter compare value for channel 2
 	
-	TIM4->CR1 |= TIM_CR1_CEN;
 	
-
-
 	
 }
+
+
+  void set_duty_CH1(int duty_cycle_1)
+	{ 
+	  
+		TIM4->CCR1 = duty_cycle_1;               //setting counter compare value for channel 1
+	}
+		
+	void set_duty_CH2(int duty_cycle_2)
+	{
+		TIM4->CCR2 = duty_cycle_2;                //setting counter compare value for channel 2
+	}
 	
 	
+	
+	void timer4_start()
+	{
+		TIM4->CR1 |= TIM_CR1_CEN;
+	}
+
+  void timer4_stop()
+ {
+	 TIM4->CR1 &= ~(0X1);
+	
+ }
+	
+  uint32_t timer4_count()
+ {
+	return TIM4->CNT; 
+ }
+	
+ uint32_t timer4_event()
+ {
+	return (TIM4->SR & 0x4);
+ }
 	
 
 

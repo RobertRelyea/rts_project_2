@@ -391,6 +391,16 @@
               <FileType>5</FileType>
               <FilePath>.\pins.txt</FilePath>
             </File>
+            <File>
+              <FileName>servo_recipes.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\servo_recipes.h</FilePath>
+            </File>
+            <File>
+              <FileName>servo_recipes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\servo_recipes.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -450,6 +460,11 @@
               <FileName>tim4.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Drivers\tim4.h</FilePath>
+            </File>
+            <File>
+              <FileName>LED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Drivers\LED.h</FilePath>
             </File>
           </Files>
         </Group>
