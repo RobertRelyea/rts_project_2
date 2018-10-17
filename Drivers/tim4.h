@@ -25,6 +25,8 @@ void timer4_start();
 
 void timer4_stop();
 
+uint32_t get_timer4_elapsed(uint32_t start_time);
+
  
 
 #endif

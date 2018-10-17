@@ -90,6 +90,18 @@ void timer4_init()
  {
 	return (TIM4->SR & 0x4);
  }
+ 
+ uint32_t get_timer4_elapsed(uint32_t start_time)
+ {
+	// Get current timer count
+	uint32_t current_time = timer4_count();
+	// Check if the timer has wrapped around
+	if (current_time < start_time)
+		current_time += 200;
+ 
+	// Return time elapsed between start and current times.
+	return current_time - start_time;
+ }
 	
 
 

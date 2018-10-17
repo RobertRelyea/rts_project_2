@@ -34,11 +34,13 @@ Drivers/tim4.h(24): warning:  #1295-D: Deprecated declaration timer4_start - giv
   void timer4_start();
 Drivers/tim4.h(26): warning:  #1295-D: Deprecated declaration timer4_stop - give arg types
   void timer4_stop();
-main.c: 3 warnings, 0 errors
+main.c(30): warning:  #177-D: variable "count"  was declared but never referenced
+  	uint32_t count = 0;
+main.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=2468 RO-data=408 RW-data=0 ZI-data=1664  
+Program Size: Code=1816 RO-data=408 RW-data=0 ZI-data=1632  
 FromELF: creating hex file...
-".\Objects\project.axf" - 0 Error(s), 3 Warning(s).
+".\Objects\project.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 

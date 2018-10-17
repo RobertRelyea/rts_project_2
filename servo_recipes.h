@@ -54,9 +54,5 @@ enum events
 	recipe_ended
 };
 
-// Define a "global" state value that is only accessible in one .c module (static makes it "private").
-// Define the initial state as paused.
-static enum servo_states servo_one_state = state_unknown;
-
 
 #endif
