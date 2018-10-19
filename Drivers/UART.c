@@ -7,6 +7,24 @@
 // PB.6 = USART1_TX (AF7)  |  PB.7 = USART1_RX (AF7) 
 // PD.5 = USART2_TX (AF7)  |  PD.6 = USART2_RX (AF7)
 
+char getChar(USART_TypeDef * USARTx)
+{
+	char rxByte;
+	rxByte = USART_Read(USARTx); //Read the input and store it into rxByte
+	USART_Write(USARTx, (uint8_t *)&rxByte, 1);
+	return rxByte;
+}
+
+void newLine(USART_TypeDef * USARTx)
+{
+	char txByte = '\r';
+	USART_Write(USARTx, (uint8_t *)&txByte, 1);
+	txByte = '\n';
+	USART_Write(USARTx, (uint8_t *)&txByte, 1);
+}
+
+
+
 void UART2_Init(void) {
 	// Enable the clock of USART 1 & 2
 	RCC->APB1ENR1 |= RCC_APB1ENR1_USART2EN;  // Enable USART 2 clock		
@@ -97,6 +115,11 @@ void USART_Init (USART_TypeDef * USARTx) {
 	while ( (USARTx->ISR & USART_ISR_REACK) == 0); // Verify that the USART is ready for transmission
 }
 
+// Returns non-zero when a byte is received over USART
+uint32_t USART_Received(USART_TypeDef * USARTx) 
+{
+	return (USARTx->ISR & USART_ISR_RXNE);
+}
 
 uint8_t USART_Read (USART_TypeDef * USARTx) {
 	// SR_RXNE (Read data register not empty) bit is set by hardware
@@ -147,4 +170,3 @@ void USART_IRQHandler(USART_TypeDef * USARTx, uint8_t *buffer, uint32_t * pRx_co
 		while(1);     
 	}	
 }
-

@@ -1,5 +1,9 @@
 #include "servo_recipes.h"
 
+int servo1_positions[] = {5, 6, 10, 13, 17, 21};
+int servo2_positions[] = {5, 6, 10, 13, 17, 21};
+int servo1_position = 0;
+int servo2_position = 0;
 
 // Define a "global" state value that is only accessible in one .c module (static makes it "private").
 // Define the initial state as paused.
@@ -7,25 +11,31 @@ static enum servo_states servo_one_state = state_unknown;
 
 // Code to start the move (adjust PWM) and start the timing delay based on the
 // current position.
-static void start_move( enum servo_states new_state )
+static void startMove( enum servo_states new_state )
 {
 	// TBD
 }
 
 
+void recipeStep()
+{
+	
+}
+
 
 // This section should be in a separate .c file such as state_machine.c.
 // In this code you add code to each case to process the 
-/*void process_event( enum events one_event )
+/*
+void process_event( enum events one_event )
 {
 	switch ( servo_one_state )
 	{
 		case state_at_position:		// servo is stationary at a known position
 			// Left movement requested
-			if ( one_event == move_left && servo_position < 5 )
+			if ( one_event == move_left && servo1_position < 5 )
 			{
-				servo_position++;
-				start_move( servo_position );
+				servo1_position++;
+				start_move( servo1_position );
 				current_servo_state = state_moving;		// when the move ends (enough time has elapsed) new state will be state_position_1
 			}
 
@@ -44,17 +54,4 @@ static void start_move( enum servo_states new_state )
 		case state_recipe_ended :
 			break;
 	}
-}
-
-void print_recipe()
-{
-	int i = 0 ;
-
-	while ( recipes[ i ] )
-	{
-		printf( "%02x\n", *recipes[ i++ ] ) ;	// printf first hex entry of each recipe
-
-	}
-}
-
-*/
+}*/

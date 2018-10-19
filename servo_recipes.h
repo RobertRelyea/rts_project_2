@@ -3,13 +3,18 @@
 
 #include <stdlib.h>
 
+extern int servo1_positions[6];
+extern int servo2_positions[6];
+
+
+
 
 // Define all of the commands that are valid
 #define MOV         (0x20)
 #define WAIT        (0x40)
 #define LOOP        (0x80)
 #define END_LOOP    (0xA0)
-#define CUST_ONE    (0xB0) // TODO
+#define CUST_ONE    (0x30) // TODO
 #define CUST_TWO    (0xC0) // TODO
 #define RECIPE_END 	(0)
 

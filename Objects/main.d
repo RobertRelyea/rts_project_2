@@ -13,6 +13,7 @@
 .\objects\main.o: Drivers/tim4.h
 .\objects\main.o: Drivers/pa6_config.h
 .\objects\main.o: Drivers/LED.h
+.\objects\main.o: servo_recipes.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
