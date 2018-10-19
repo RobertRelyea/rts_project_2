@@ -1,11 +1,21 @@
 #include "tim4.h"
+#include "tim2.h"
+#define servo_0 (20)
+#define servo_1 (40)
+#define servo_2 (60)
+#define servo_3 (80)
+#define servo_4 (100)
+#define servo_5 (120)
 
+int myticks = 0;
+
+uint8_t buffer[1024];
 void timer4_init()
 {
 	
-	//PB6 CH1 AF2
+	
 	RCC->AHB2ENR |= RCC_AHB2ENR_GPIOBEN;
-	//GPIOB-> MODER &= ~(0x300);  
+	
 	GPIOB-> MODER &= ~(0x03 << (2*6));  //clearing out 0 and 1 bit for pb6  
 	GPIOB-> MODER |= 0x02 << (2*6);     //selecting AF mode for PB6
 	
@@ -45,18 +55,184 @@ void timer4_init()
 	TIM4->ARR = 200; 
 	TIM4->EGR |= TIM_EGR_UG;         //set UG bit in EGR register for force update
 	
-	TIM4->CCR1 = 150;               //setting counter compare value for channel 1
-	TIM4->CCR2 = 150;                //setting counter compare value for channel 2
+	//TIM4->CCR1 = 150;               //setting counter compare value for channel 1
+	//TIM4->CCR2 = 150;                //setting counter compare value for channel 2
 	
 	TIM4->CR1 |= TIM_CR1_CEN;
 	
+}
 
 
+void Timer2_Init()
+{
+	//Enable Timer 2 through the RCC
+	RCC->APB1ENR1 |= RCC_APB1ENR1_TIM2EN;
+	//RCC->AHB2ENR |=   RCC_AHB2ENR_GPIOAEN; //Enable clk for port A GPIO as well
+	
+	//Set the prescaler to 7999 (80MHz / 1MHz) to get 0.1 ms per clock cnt
+	TIM2->PSC = 0; //0x50 = 80 decimal
+
+	//Set the ARR so that interrupts occur every 100 ms
+	TIM2->ARR = 80; 
+	
+	//Create an update event via the Update Generator bit
+	TIM2->CR1 |= TIM_CR1_URS;
+	TIM2->DIER |= TIM_DIER_UIE;
+	TIM2->EGR |= TIM_EGR_UG;
+	
+	//TIM2->CR1 |= TIM_CR1_CEN; //Enable counting!
+
+	
+	TIM2->EGR |= TIM_EGR_UG; 
+	
+	NVIC_EnableIRQ(TIM2_IRQn);
+}
+
+void TIM2_IRQHandler(void)
+{
+	myticks ++;
+	TIM2->SR &= ~(TIM_SR_UIF);
+}
+
+void delay(int s)
+{
+	TIM2->CR1 |= TIM_CR1_CEN;
+	myticks = 0;
+	while(myticks<(s*1000000));
+	TIM2->CR1 &= ~(TIM_CR1_CEN);
+		
 	
 }
+
+
+
+
+
+ void servo_position(int servo, int position)
+ {
+	 if(servo == 0)
+	 {
+		 if(position == 0)
+		 {
+			 TIM4->CCR1 = servo_0;
+		 }
+		 else if (position == 1)
+		 {
+			 TIM4->CCR1 = servo_1;
+		 }
+		  else if (position == 2)
+		 {
+			 TIM4->CCR1 = servo_2;
+		 }
+		  else if (position == 3)
+		 {
+			 TIM4->CCR1 = servo_3;
+		 }
+		  else if (position == 4)
+		 {
+			 TIM4->CCR1 = servo_4;
+		 }
+		  else if (position == 5)
+		 {
+			 TIM4->CCR1 = servo_5;
+		 }
+	 }
+	 else if (servo == 1)
+	 {
+		 if(position == 0)
+		 {
+			 TIM4->CCR2 = servo_0;
+		 }
+		 else if (position == 1)
+		 {
+			 TIM4->CCR2 = servo_1;
+		 }
+		  else if (position == 2)
+		 {
+			 TIM4->CCR2 = servo_2;
+		 }
+		  else if (position == 3)
+		 {
+			 TIM4->CCR2 = servo_3;
+		 }
+		  else if (position == 4)
+		 {
+			 TIM4->CCR2 = servo_4;
+		 }
+		  else if (position == 5)
+		 {
+			 TIM4->CCR2 = servo_5;
+		 }
+		 
+	 }
+	 TIM4->EGR |= TIM_EGR_UG;
+ }
 	
+void opcode( unsigned char x , int servo)
+{
+	 unsigned char y = (x >>5);
+	 if (y== 0x01)
+	 {
+		 sprintf((char *)buffer, "MOV\r\n");
+		 USART_Write(USART2,(uint8_t *)buffer, strlen((char *)buffer));
+		 movs(x, servo);
+	 }
+	 else if (y==0x02)
+	 {
+		  sprintf((char *)buffer, "WAIT\r\n");
+		 USART_Write(USART2,(uint8_t *)buffer, strlen((char *)buffer));
+		 //wait(&x);
+	 }
+	 else if (y==0x04)
+	 {
+		  sprintf((char *)buffer, "LOOP\r\n");
+		 USART_Write(USART2,(uint8_t *)buffer, strlen((char *)buffer));
+		 //loop(&x);
+	 }
+	 else if (y==0x05)
+	 {
+		  sprintf((char *)buffer, "END_LOOP\r\n");
+		 USART_Write(USART2,(uint8_t *)buffer, strlen((char *)buffer));
+		 //endloop(&x);
+	 }
+	 else if (y==0x00)
+	 {
+		  sprintf((char *)buffer, "RECIPE_END\r\n");
+		 USART_Write(USART2,(uint8_t *)buffer, strlen((char *)buffer));
+		 //recipeend(&x);
+	 }
+}
+
+
+void movs(unsigned char z, int servop)
+{
 	
-	
+	if (z==0x20)
+	{
+	servo_position( servop,0);
+	}
+	if (z==0x21)
+	{
+	servo_position( servop,1);
+	}
+	if (z==0x22)
+	{
+	servo_position( servop,2);
+	}
+	if (z==0x23)
+	{
+	servo_position( servop,3);
+	}if (z==0x24)
+	{
+	servo_position( servop,4);
+	}
+	if (z==0x25)
+	{
+	servo_position( servop,5);
+	}
+}
+
+
 
 
 /*

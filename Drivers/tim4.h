@@ -16,5 +16,7 @@ uint32_t timer3_count(void);
 uint32_t timer3_capture(void);
 
 uint32_t timer3_event(void);
-
+void movs(unsigned char z, int servop);
+void delay(int s);
+void Timer2_Init(void);
 #endif
