@@ -66,6 +66,8 @@ int main(){
 						process_event(move_left);
 					else if (user_input[0] == 'R' || user_input[0] == 'r') // Pause
 						process_event(move_right);
+					else if (user_input[0] == 'B' || user_input[0] == 'b') // Pause
+						process_event(begin);
 				}
 			}
 		}

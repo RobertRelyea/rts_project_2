@@ -60,6 +60,7 @@ enum events
 	move_right,
 	pause,
 	resume,
+	begin,
 	recipe_ended
 };
 

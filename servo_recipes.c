@@ -54,6 +54,7 @@ static enum servo_states servo1_state = state_unknown;
 static void startMove1( enum servo_states new_state, unsigned char position )
 {
 	servo1_state = new_state;
+	servo1_position = position;
 	set_duty_CH1(servo1_positions[position]);
 }
 
@@ -61,7 +62,10 @@ static void startMove1( enum servo_states new_state, unsigned char position )
 void recipe1Step()
 {	
 	if (r1_status != status_running)
+	{
+		servo1_state = state_at_position;
 		return;
+	}
 	
 	// Grab the current recipe step
 	unsigned char step = recipe1[r1_idx];
@@ -152,6 +156,15 @@ void recipe1Step()
 
 void process_event( enum events one_event )
 {
+	if (one_event == begin)
+	{
+		r1_idx = 0;
+		r1_loop = 0;
+		r1_loop_iter = 0;
+		r1_wait = 0;
+		r1_status = status_running;
+	}
+	
 	if (one_event == pause)
 	{
 		r1_status = status_paused;
@@ -169,7 +182,7 @@ void process_event( enum events one_event )
 		{
 			case state_at_position:		// servo is stationary at a known position
 				// Left movement requested
-				if ( one_event == move_left && servo1_position < 6 )
+				if ( one_event == move_left && servo1_position < 5 )
 				{
 					servo1_position++;
 					startMove1(state_moving, servo1_position );
@@ -182,8 +195,6 @@ void process_event( enum events one_event )
 					startMove1(state_moving, servo1_position );
 				}
 				break;
-			case state_moving: // Servo is moving, wait for some time
-					break;
 			case state_unknown :
 				break;
 			case state_recipe_ended :
