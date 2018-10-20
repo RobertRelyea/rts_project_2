@@ -17,9 +17,7 @@ uint32_t timer4_capture(void);
 
 uint32_t timer4_event(void);
 
-void set_duty_CH1(int duty_cycle_1);
-
-void set_duty_CH2(int duty_cycle_2);
+void setDuty(int channel, int duty_cycle);
 
 uint32_t get_timer4_elapsed(uint32_t start_time);
 

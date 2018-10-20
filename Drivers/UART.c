@@ -26,7 +26,6 @@ void newLine(USART_TypeDef * USARTx)
 void putLine(USART_TypeDef * USARTx, char * buffer)
 {
 	USART_Write(USART2,(uint8_t *)buffer, strlen((char *)buffer));
-  newLine(USART2);
 }
 
 

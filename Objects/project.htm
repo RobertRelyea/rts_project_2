@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Oct 19 21:00:53 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Oct 20 17:18:03 2018
 <BR><P>
-<H3>Maximum Stack Usage =         64 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        256 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-__rt_entry_main &rArr; main &rArr; recipe1Step &rArr; putLine &rArr; newLine &rArr; USART_Write
+__rt_entry_main &rArr; main &rArr; processInput &rArr; processEvent &rArr; startMove &rArr; __aeabi_memcpy4
 <P>
 <H3>
 Functions with no stack information
@@ -143,9 +143,9 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
 </UL>
 
-<P><STRONG><a name="[89]"></a>__scatterload_rt2_thumb_only</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
+<P><STRONG><a name="[8e]"></a>__scatterload_rt2_thumb_only</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
 
-<P><STRONG><a name="[8a]"></a>__scatterload_null</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
+<P><STRONG><a name="[8f]"></a>__scatterload_null</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
 
 <P><STRONG><a name="[62]"></a>__scatterload_copy</STRONG> (Thumb, 26 bytes, Stack size unknown bytes, __scatter_copy.o(!!handler_copy), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_copy
@@ -153,7 +153,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_copy
 </UL>
 
-<P><STRONG><a name="[8b]"></a>__scatterload_zeroinit</STRONG> (Thumb, 28 bytes, Stack size unknown bytes, __scatter_zi.o(!!handler_zi), UNUSED)
+<P><STRONG><a name="[90]"></a>__scatterload_zeroinit</STRONG> (Thumb, 28 bytes, Stack size unknown bytes, __scatter_zi.o(!!handler_zi), UNUSED)
 
 <P><STRONG><a name="[68]"></a>__rt_lib_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit.o(.ARM.Collect$$libinit$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_li
@@ -163,70 +163,70 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_init
 </UL>
 
-<P><STRONG><a name="[8c]"></a>__rt_lib_init_alloca_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002E))
+<P><STRONG><a name="[91]"></a>__rt_lib_init_alloca_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002E))
 
-<P><STRONG><a name="[8d]"></a>__rt_lib_init_argv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002C))
+<P><STRONG><a name="[92]"></a>__rt_lib_init_argv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002C))
 
-<P><STRONG><a name="[8e]"></a>__rt_lib_init_atexit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001B))
+<P><STRONG><a name="[93]"></a>__rt_lib_init_atexit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001B))
 
-<P><STRONG><a name="[8f]"></a>__rt_lib_init_clock_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000021))
+<P><STRONG><a name="[94]"></a>__rt_lib_init_clock_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000021))
 
-<P><STRONG><a name="[90]"></a>__rt_lib_init_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000032))
+<P><STRONG><a name="[95]"></a>__rt_lib_init_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000032))
 
-<P><STRONG><a name="[91]"></a>__rt_lib_init_exceptions_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000030))
+<P><STRONG><a name="[96]"></a>__rt_lib_init_exceptions_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000030))
 
-<P><STRONG><a name="[92]"></a>__rt_lib_init_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001F))
+<P><STRONG><a name="[97]"></a>__rt_lib_init_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001F))
 
-<P><STRONG><a name="[93]"></a>__rt_lib_init_getenv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000023))
+<P><STRONG><a name="[98]"></a>__rt_lib_init_getenv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000023))
 
-<P><STRONG><a name="[94]"></a>__rt_lib_init_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000A))
+<P><STRONG><a name="[99]"></a>__rt_lib_init_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000A))
 
-<P><STRONG><a name="[95]"></a>__rt_lib_init_lc_collate_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000011))
+<P><STRONG><a name="[9a]"></a>__rt_lib_init_lc_collate_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000011))
 
-<P><STRONG><a name="[96]"></a>__rt_lib_init_lc_ctype_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000013))
+<P><STRONG><a name="[9b]"></a>__rt_lib_init_lc_ctype_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000013))
 
-<P><STRONG><a name="[97]"></a>__rt_lib_init_lc_monetary_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000015))
+<P><STRONG><a name="[9c]"></a>__rt_lib_init_lc_monetary_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000015))
 
-<P><STRONG><a name="[98]"></a>__rt_lib_init_lc_numeric_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000017))
+<P><STRONG><a name="[9d]"></a>__rt_lib_init_lc_numeric_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000017))
 
-<P><STRONG><a name="[99]"></a>__rt_lib_init_lc_time_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000019))
+<P><STRONG><a name="[9e]"></a>__rt_lib_init_lc_time_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000019))
 
-<P><STRONG><a name="[9a]"></a>__rt_lib_init_preinit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000004))
+<P><STRONG><a name="[9f]"></a>__rt_lib_init_preinit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000004))
 
-<P><STRONG><a name="[9b]"></a>__rt_lib_init_rand_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000E))
+<P><STRONG><a name="[a0]"></a>__rt_lib_init_rand_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000E))
 
-<P><STRONG><a name="[9c]"></a>__rt_lib_init_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000033))
+<P><STRONG><a name="[a1]"></a>__rt_lib_init_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000033))
 
-<P><STRONG><a name="[9d]"></a>__rt_lib_init_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001D))
+<P><STRONG><a name="[a2]"></a>__rt_lib_init_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001D))
 
-<P><STRONG><a name="[9e]"></a>__rt_lib_init_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000025))
+<P><STRONG><a name="[a3]"></a>__rt_lib_init_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000025))
 
-<P><STRONG><a name="[9f]"></a>__rt_lib_init_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000C))
+<P><STRONG><a name="[a4]"></a>__rt_lib_init_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000C))
 
 <P><STRONG><a name="[6d]"></a>__rt_lib_shutdown</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown.o(.ARM.Collect$$libshutdown$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_ls
 </UL>
 
-<P><STRONG><a name="[a0]"></a>__rt_lib_shutdown_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000002))
+<P><STRONG><a name="[a5]"></a>__rt_lib_shutdown_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000002))
 
-<P><STRONG><a name="[a1]"></a>__rt_lib_shutdown_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000007))
+<P><STRONG><a name="[a6]"></a>__rt_lib_shutdown_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000007))
 
-<P><STRONG><a name="[a2]"></a>__rt_lib_shutdown_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000F))
+<P><STRONG><a name="[a7]"></a>__rt_lib_shutdown_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000F))
 
-<P><STRONG><a name="[a3]"></a>__rt_lib_shutdown_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000010))
+<P><STRONG><a name="[a8]"></a>__rt_lib_shutdown_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000010))
 
-<P><STRONG><a name="[a4]"></a>__rt_lib_shutdown_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000A))
+<P><STRONG><a name="[a9]"></a>__rt_lib_shutdown_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000A))
 
-<P><STRONG><a name="[a5]"></a>__rt_lib_shutdown_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000004))
+<P><STRONG><a name="[aa]"></a>__rt_lib_shutdown_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000004))
 
-<P><STRONG><a name="[a6]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C))
+<P><STRONG><a name="[ab]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C))
 
 <P><STRONG><a name="[60]"></a>__rt_entry</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry.o(.ARM.Collect$$rtentry$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
 </UL>
 
-<P><STRONG><a name="[a7]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
+<P><STRONG><a name="[ac]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
 
 <P><STRONG><a name="[65]"></a>__rt_entry_sh</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry4.o(.ARM.Collect$$rtentry$$00000004))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
@@ -239,17 +239,17 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init
 </UL>
 
-<P><STRONG><a name="[a8]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
+<P><STRONG><a name="[ad]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[69]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; recipe1Step &rArr; putLine &rArr; newLine &rArr; USART_Write
+<BR><BR>[Stack]<UL><LI>Max Depth = 256 + Unknown Stack Size
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; processInput &rArr; processEvent &rArr; startMove &rArr; __aeabi_memcpy4
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a9]"></a>__rt_entry_postli_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000C))
+<P><STRONG><a name="[ae]"></a>__rt_entry_postli_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000C))
 
 <P><STRONG><a name="[72]"></a>__rt_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit.o(.ARM.Collect$$rtexit$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -259,7 +259,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_shutdown
 </UL>
 
-<P><STRONG><a name="[aa]"></a>__rt_exit_prels_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000002))
+<P><STRONG><a name="[af]"></a>__rt_exit_prels_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000002))
 
 <P><STRONG><a name="[6e]"></a>__rt_exit_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
@@ -582,17 +582,34 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[86]"></a>strlen</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, strlen.o(.text))
+<P><STRONG><a name="[8a]"></a>strlen</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, strlen.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = strlen
 </UL>
-<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putLine
+<BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putLine
 </UL>
 
-<P><STRONG><a name="[ab]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[7d]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_memcpy4
+</UL>
+<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recipeStepHelper
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;processEvent
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startMove
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recipeStep
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;processInput
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initServos
+</UL>
 
-<P><STRONG><a name="[ac]"></a>__rt_heap_escrow$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[b0]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text), UNUSED)
 
-<P><STRONG><a name="[ad]"></a>__rt_heap_expand$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[b1]"></a>__rt_memcpy_w</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text), UNUSED)
+
+<P><STRONG><a name="[b2]"></a>_memcpy_lastbytes_aligned</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memcpy_w.o(.text), UNUSED)
+
+<P><STRONG><a name="[b3]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+
+<P><STRONG><a name="[b4]"></a>__rt_heap_escrow$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+
+<P><STRONG><a name="[b5]"></a>__rt_heap_expand$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
 <P><STRONG><a name="[66]"></a>__user_setup_stackheap</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, sys_stackheap_outer.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
@@ -613,25 +630,25 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[ae]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
+<P><STRONG><a name="[b6]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
 <P><STRONG><a name="[70]"></a>__user_perproc_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[af]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
+<P><STRONG><a name="[b7]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
 <P><STRONG><a name="[6f]"></a>_sys_exit</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, sys_exit.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_exit
 </UL>
 
-<P><STRONG><a name="[b0]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
+<P><STRONG><a name="[b8]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[b1]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
+<P><STRONG><a name="[b9]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[b2]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
+<P><STRONG><a name="[ba]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[7c]"></a>System_Clock_Init</STRONG> (Thumb, 380 bytes, Stack size 0 bytes, sysclock.o(i.System_Clock_Init))
+<P><STRONG><a name="[7e]"></a>System_Clock_Init</STRONG> (Thumb, 380 bytes, Stack size 0 bytes, sysclock.o(i.System_Clock_Init))
 <BR><BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -660,7 +677,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getChar
 </UL>
 
-<P><STRONG><a name="[7f]"></a>USART_Received</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, uart.o(i.USART_Received))
+<P><STRONG><a name="[83]"></a>USART_Received</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, uart.o(i.USART_Received))
 <BR><BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -669,8 +686,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Delay
 </UL>
-<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putLine
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;newLine
+<BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putLine
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;newLine
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getChar
 </UL>
 
@@ -688,92 +705,124 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer4_count
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wait
+<BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wait
 </UL>
 
-<P><STRONG><a name="[6a]"></a>main</STRONG> (Thumb, 212 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = main &rArr; recipe1Step &rArr; putLine &rArr; newLine &rArr; USART_Write
+<P><STRONG><a name="[7c]"></a>initServos</STRONG> (Thumb, 110 bytes, Stack size 8 bytes, servo_recipes.o(i.initServos))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = initServos &rArr; __aeabi_memcpy4
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer4_start
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer4_init
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recipe1Step
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_event
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;newLine
+<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+</UL>
+<BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[6a]"></a>main</STRONG> (Thumb, 138 bytes, Stack size 8 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = main &rArr; processInput &rArr; processEvent &rArr; startMove &rArr; __aeabi_memcpy4
+</UL>
+<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer4_start
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer4_init
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recipeStep
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putLine
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;processInput
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;newLine
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initServos
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getChar
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Received
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Received
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART2_Init
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Clock_Init
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;waitFor
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Clock_Init
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;waitFor
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;parseInput
 </UL>
 <BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[80]"></a>newLine</STRONG> (Thumb, 34 bytes, Stack size 12 bytes, uart.o(i.newLine))
+<P><STRONG><a name="[81]"></a>newLine</STRONG> (Thumb, 34 bytes, Stack size 12 bytes, uart.o(i.newLine))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = newLine &rArr; USART_Write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putLine
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[81]"></a>process_event</STRONG> (Thumb, 146 bytes, Stack size 8 bytes, servo_recipes.o(i.process_event))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = process_event &rArr; startMove1
+<P><STRONG><a name="[84]"></a>parseInput</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, main.o(i.parseInput))
+<BR><BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
-<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startMove1
+
+<P><STRONG><a name="[88]"></a>processEvent</STRONG> (Thumb, 200 bytes, Stack size 112 bytes, servo_recipes.o(i.processEvent))
+<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = processEvent &rArr; startMove &rArr; __aeabi_memcpy4
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startMove
+</UL>
+<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;processInput
+</UL>
+
+<P><STRONG><a name="[85]"></a>processInput</STRONG> (Thumb, 84 bytes, Stack size 96 bytes, servo_recipes.o(i.processInput))
+<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = processInput &rArr; processEvent &rArr; startMove &rArr; __aeabi_memcpy4
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;processEvent
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[85]"></a>putLine</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, uart.o(i.putLine))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = putLine &rArr; newLine &rArr; USART_Write
+<P><STRONG><a name="[82]"></a>putLine</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, uart.o(i.putLine))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = putLine &rArr; USART_Write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Write
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;newLine
-</UL>
-<BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recipe1Step
-</UL>
-
-<P><STRONG><a name="[82]"></a>recipe1Step</STRONG> (Thumb, 332 bytes, Stack size 16 bytes, servo_recipes.o(i.recipe1Step))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = recipe1Step &rArr; putLine &rArr; newLine &rArr; USART_Write
-</UL>
-<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putLine
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startMove1
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[87]"></a>set_duty_CH1</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, tim4.o(i.set_duty_CH1))
-<BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startMove1
+<P><STRONG><a name="[86]"></a>recipeStep</STRONG> (Thumb, 76 bytes, Stack size 80 bytes, servo_recipes.o(i.recipeStep))
+<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = recipeStep &rArr; recipeStepHelper &rArr; startMove &rArr; __aeabi_memcpy4
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recipeStepHelper
+</UL>
+<BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[8b]"></a>recipeStepHelper</STRONG> (Thumb, 322 bytes, Stack size 120 bytes, servo_recipes.o(i.recipeStepHelper))
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = recipeStepHelper &rArr; startMove &rArr; __aeabi_memcpy4
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startMove
+</UL>
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recipeStep
+</UL>
+
+<P><STRONG><a name="[8c]"></a>setDuty</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, tim4.o(i.setDuty))
+<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startMove
 </UL>
 
 <P><STRONG><a name="[7b]"></a>timer4_count</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, tim4.o(i.timer4_count))
 <BR><BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_timer4_elapsed
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wait
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wait
 </UL>
 
-<P><STRONG><a name="[7d]"></a>timer4_init</STRONG> (Thumb, 316 bytes, Stack size 0 bytes, tim4.o(i.timer4_init))
+<P><STRONG><a name="[7f]"></a>timer4_init</STRONG> (Thumb, 316 bytes, Stack size 0 bytes, tim4.o(i.timer4_init))
 <BR><BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[7e]"></a>timer4_start</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, tim4.o(i.timer4_start))
+<P><STRONG><a name="[80]"></a>timer4_start</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, tim4.o(i.timer4_start))
 <BR><BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[88]"></a>wait</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, main.o(i.wait))
+<P><STRONG><a name="[8d]"></a>wait</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, main.o(i.wait))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = wait &rArr; get_timer4_elapsed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer4_count
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_timer4_elapsed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;waitFor
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;waitFor
 </UL>
 
-<P><STRONG><a name="[83]"></a>waitFor</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, main.o(i.waitFor))
+<P><STRONG><a name="[87]"></a>waitFor</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, main.o(i.waitFor))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = waitFor &rArr; wait &rArr; get_timer4_elapsed
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wait
+<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wait
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -782,20 +831,21 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init_fp_1
 </UL>
 
-<P><STRONG><a name="[b3]"></a>__fplib_config_fpu_vfp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fpinit.o(x$fpl$fpinit), UNUSED)
+<P><STRONG><a name="[bb]"></a>__fplib_config_fpu_vfp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fpinit.o(x$fpl$fpinit), UNUSED)
 
-<P><STRONG><a name="[b4]"></a>__fplib_config_pureend_doubles</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fpinit.o(x$fpl$fpinit), UNUSED)
+<P><STRONG><a name="[bc]"></a>__fplib_config_pureend_doubles</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fpinit.o(x$fpl$fpinit), UNUSED)
 <P>
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[84]"></a>startMove1</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, servo_recipes.o(i.startMove1))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = startMove1
+<P><STRONG><a name="[89]"></a>startMove</STRONG> (Thumb, 62 bytes, Stack size 32 bytes, servo_recipes.o(i.startMove))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = startMove &rArr; __aeabi_memcpy4
 </UL>
-<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_duty_CH1
+<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setDuty
 </UL>
-<BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recipe1Step
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;process_event
+<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;recipeStepHelper
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;processEvent
 </UL>
 <P>
 <H3>

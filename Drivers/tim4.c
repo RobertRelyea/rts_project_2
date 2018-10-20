@@ -50,55 +50,57 @@ void timer4_init()
 	
 	TIM4->ARR = 199;                 // Upcounting from 0 to 199
 	TIM4->EGR |= TIM_EGR_UG;         //set UG bit in EGR register for force update
-	
-	
-	
-	
 }
 
 
-  void set_duty_CH1(int duty_cycle_1)
-	{ 
-	  
-		TIM4->CCR1 = duty_cycle_1;               //setting counter compare value for channel 1
-	}
-		
-	void set_duty_CH2(int duty_cycle_2)
+void setDuty(int channel, int duty_cycle)
+{ 
+	switch(channel)
 	{
-		TIM4->CCR2 = duty_cycle_2;                //setting counter compare value for channel 2
-	}
-	
-	
-	
-	void timer4_start()
-	{
-		TIM4->CR1 |= TIM_CR1_CEN;
-	}
+		case 1: // Channel 1
+			TIM4->CCR1 = duty_cycle;
+			break;
+		case 2: // Channel 2
+			TIM4->CCR2 = duty_cycle;
+			break;
+		case 3: // Channel 3
+			TIM4->CCR3 = duty_cycle;
+			break;
+		case 4: // Channel 4
+			TIM4->CCR4 = duty_cycle;
+			break;
+	}		
+}
 
-  void timer4_stop()
- {
-	 TIM4->CR1 &= ~(0X1);
-	
- }
-	
-  uint32_t timer4_count()
- {
+
+void timer4_start()
+{
+	TIM4->CR1 |= TIM_CR1_CEN;
+}
+
+void timer4_stop()
+{
+  TIM4->CR1 &= ~(0X1);
+}
+
+uint32_t timer4_count()
+{
 	return TIM4->CNT; 
- }
-	
- uint32_t timer4_event()
- {
+}
+
+uint32_t timer4_event()
+{
 	return (TIM4->SR & 0x4);
- }
- 
- uint32_t get_timer4_elapsed(uint32_t start_time)
- {
+}
+
+uint32_t get_timer4_elapsed(uint32_t start_time)
+{
 	// Get current timer count
 	uint32_t current_time = timer4_count();
 	// Check if the timer has wrapped around
 	if (current_time < start_time)
 		current_time += 200;
- 
+
 	// Return time elapsed between start and current times.
 	return current_time - start_time;
- }
+}

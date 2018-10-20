@@ -1,6 +1,4 @@
 #include "servo_recipes.h"
-#include "Drivers/tim4.h"
-#include "Drivers/UART.h"
 
 // Examples of simple recipes
 // Note that, because the bottom 5 bits are zeros adding or bitwise or'ing
@@ -19,61 +17,82 @@ unsigned char recipe1[] = {
 
 unsigned char recipe2[] = { MOV | 5, MOV | 2, RECIPE_END } ;
 
-// If you set up an array like this then you can easily switch recipes
-// using an additional user input command.
-unsigned char *recipes[] = { recipe1, recipe2, NULL } ;
-
 int servo1_positions[] = {5, 6, 10, 13, 17, 21};
 int servo2_positions[] = {5, 6, 10, 13, 17, 21};
-int servo1_position = 0;
-int servo2_position = 0;
 
-// Indexes for each recipe
-int r1_idx = 0;
-int r2_idx = 0;
+// Declare servo structs
+servo_type servo1;
+servo_type servo2;
+recipe_type recipe_t1;
+recipe_type recipe_t2;
 
-// Move variables
-unsigned char r1_move = 0;
-unsigned char r2_move = 0;
-
-// Wait variables
-unsigned char r1_wait = 0;
-unsigned char r2_wait = 0;
-
-// Loop variables
-unsigned char r1_loop = 0;
-unsigned char r1_loop_iter = 0;
-unsigned char r2_loop = 0;
-unsigned char r2_loop_iter = 0;
-
-enum status r1_status = status_running;
-enum status r2_status = status_running;
-
-// Define a "global" state value that is only accessible in one .c module (static makes it "private").
-// Define the initial state as paused.
-static enum servo_states servo1_state = state_unknown;
+void initServos()
+{
+	// Set servo positions
+	servo1.positions = servo1_positions;
+	servo2.positions = servo2_positions;
+	
+	// Set current servo position
+	servo1.position = 0;
+	servo2.position = 0;
+	
+	// Set current servo status
+	servo1.state = state_unknown;
+  servo2.state = state_unknown;
+	
+	// Set servo channels
+	servo1.channel = 1;
+	servo2.channel = 2;
+	
+	// Initialize servo recipes
+	recipe_t1.idx = 0;
+	recipe_t1.move = 0;
+	recipe_t1.wait = 0;
+	recipe_t1.loop = 0;
+	recipe_t1.loop_iter = 0;
+	recipe_t1.status = status_paused;
+	recipe_t1.recipe = recipe1;
+	servo1.recipe = recipe_t1;
+	
+	recipe_t2.idx = 0;
+	recipe_t2.move = 0;
+	recipe_t2.wait = 0;
+	recipe_t2.loop = 0;
+	recipe_t2.loop_iter = 0;
+	recipe_t2.status = status_paused;
+	recipe_t2.recipe = recipe2;
+	servo2.recipe = recipe_t2;
+}
 
 // Code to start the move (adjust PWM) and start the timing delay based on the
 // current position.
-static void startMove1( enum servo_states new_state, unsigned char position )
+static servo_type startMove( enum servo_states new_state, servo_type servo, unsigned char position )
 {
-	servo1_state = new_state;
-	r1_move = (servo1_position > position) ? (servo1_position - position) : (position - servo1_position);
-	servo1_position = position;
-	set_duty_CH1(servo1_positions[position]);
+	servo.state = new_state;
+	servo.recipe.move = (servo.position > position) ? 
+		(servo.position - position) : (position - servo.position);
+	servo.position = position;
+	setDuty(servo.channel, servo.positions[position]);
+	return servo;
 }
 
 
-void recipe1Step()
+void recipeStep()
 {	
-	if (r1_status != status_running)
+	servo1 = recipeStepHelper(servo1);
+	servo2 = recipeStepHelper(servo2);
+}
+
+servo_type recipeStepHelper(servo_type servo)
+{
+	if (servo.recipe.status != status_running)
 	{
-		servo1_state = state_at_position;
-		return;
+		servo.state = state_at_position;
+		return servo;
 	}
 	
 	// Grab the current recipe step
-	unsigned char step = recipe1[r1_idx];
+	unsigned char step = servo.recipe.recipe[servo.recipe.idx];
 	
 	// Extract the command
 	unsigned char command = (step & 0xE0); 
@@ -83,124 +102,118 @@ void recipe1Step()
 	switch(command)
 	{
 		case MOV:
-			putLine(USART2, "Moving");
+			//putLine(USART2, "Moving");
 			if(param > NUM_SERVO_POS - 1)
 			{
 				// Out of range error
-				r1_status = status_command_error;
+				servo.recipe.status = status_command_error;
 			}
-			else if (servo1_state != state_moving)
+			else if (servo.state != state_moving)
 			{
 				// Move servo
-				startMove1(state_moving, param);
+				servo = startMove(state_moving, servo, param);
 			}
-			else if (r1_move > 0) // Still moving...
-				r1_move--;
+			else if (servo.recipe.move > 0) // Still moving...
+				servo.recipe.move--;
 			else
 			{
-				servo1_state = state_at_position;
-				r1_idx++;
+				servo.state = state_at_position;
+				servo.recipe.idx++;
 			}
 			break;
 			
 		case WAIT:
-			putLine(USART2, "Waiting");
-			if (r1_wait > 1) // WAIT has commenced
-				r1_wait--;
-			else if (r1_wait == 1) // WAIT will complete
+			//putLine(USART2, "Waiting");
+			if (servo.recipe.wait > 1) // WAIT has commenced
+				servo.recipe.wait--;
+			else if (servo.recipe.wait == 1) // WAIT will complete
 			{
-				r1_wait--;
-				r1_idx++;
+				servo.recipe.wait--;
+				servo.recipe.idx++;
 			}
 			else // New WAIT command
-				r1_wait = param;
+				servo.recipe.wait = param;
 			break;
 			
 		case LOOP:
-			putLine(USART2, "Loopin");
+			//putLine(USART2, "Loopin");
 			// Check for nested loop
-			if (r1_loop != 0)
+			if (servo.recipe.loop != 0)
 			{
 				// Nested loop error
-				r1_status = status_nested_error;
+				servo.recipe.status = status_nested_error;
 			}
 			else
 			{
 				// Set loop flag, loop block index and loop iter count
-				r1_loop = r1_idx + 1;
-				r1_loop_iter = param;
+				servo.recipe.loop = servo.recipe.idx + 1;
+				servo.recipe.loop_iter = param;
 			}
-			r1_idx++;
+			servo.recipe.idx++;
 			break;
 		
 		case END_LOOP:
-			putLine(USART2, "End loopin");
-			if (r1_loop_iter > 0) // 
+			//putLine(USART2, "End loopin");
+			if (servo.recipe.loop_iter > 0) // 
 			{
-				r1_loop_iter--;
-				r1_idx = r1_loop;
+				servo.recipe.loop_iter--;
+				servo.recipe.idx = servo.recipe.loop;
 			}
-			if (r1_loop_iter <=0) // This will catch the end
+			if (servo.recipe.loop_iter <=0) // This will catch the end
 			{	
-				r1_loop = 0;
-				r1_idx++;
+				servo.recipe.loop = 0;
+				servo.recipe.idx++;
 			}
 			break;
 		
 		case RECIPE_END:
-			putLine(USART2, "Ending");
-			servo1_state = state_recipe_ended;
+			//putLine(USART2, "Ending");
+			servo.state = state_recipe_ended;
 			break;	
 	}
+	return servo;
 }
 
-
-
-
-
-// This section should be in a separate .c file such as state_machine.c.
-// In this code you add code to each case to process the 
-
-void process_event( enum events one_event )
+void processInput(enum events one_event, enum events two_event)
 {
-	if (one_event == begin)
+	servo1 = processEvent(one_event, servo1);
+	servo2 = processEvent(two_event, servo2);
+}
+
+servo_type processEvent( enum events event, servo_type servo)
+{
+	if (event == begin)
 	{
-		r1_idx = 0;
-		r1_loop = 0;
-		r1_loop_iter = 0;
-		r1_wait = 0;
-		r1_status = status_running;
+		servo.recipe.idx = 0;
+		servo.recipe.loop = 0;
+		servo.recipe.loop_iter = 0;
+		servo.recipe.wait = 0;
+		servo.recipe.status = status_running;
 	}
 	
-	if (one_event == pause)
+	if (event == pause)
 	{
-		r1_status = status_paused;
+		servo.recipe.status = status_paused;
 	}
 	
-	if (one_event == resume)
+	if (event == resume)
 	{
-		r1_status = status_running;
+		servo.recipe.status = status_running;
 	}
 	
 	// User servo position commands are valid only when paused
-	if (r1_status == status_paused)
+	if (servo.recipe.status == status_paused)
 	{
-		switch ( servo1_state )
+		switch ( servo.state )
 		{
 			case state_at_position:		// servo is stationary at a known position
 				// Left movement requested
-				if ( one_event == move_left && servo1_position < 5 )
-				{
-					servo1_position++;
-					startMove1(state_moving, servo1_position );
-				}
+				if ( event == move_left && servo.position < 5 )
+					servo = startMove(state_moving, servo, servo.position + 1 );
 
 				// Right movement requested
-				if (one_event == move_right && servo1_position > 0)
-				{
-					servo1_position--;
-					startMove1(state_moving, servo1_position );
-				}
+				if (event == move_right && servo.position > 0)
+					servo = startMove(state_moving, servo, servo.position - 1);
 				break;
 			case state_unknown :
 				break;
@@ -208,4 +221,5 @@ void process_event( enum events one_event )
 				break;
 		}
 	}	
+	return servo;
 }

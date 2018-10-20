@@ -2,6 +2,8 @@
 #define SERVO_RECIPE_H
 
 #include <stdlib.h>
+#include "Drivers/tim4.h"
+#include "Drivers/UART.h"
 
 extern int servo1_positions[6];
 extern int servo2_positions[6];
@@ -14,7 +16,7 @@ extern int servo2_positions[6];
 #define WAIT        (0x40)
 #define LOOP        (0x80)
 #define END_LOOP    (0xA0)
-#define CUST_ONE    (0x30) // TODO
+#define SKIP        (0x30)
 #define CUST_TWO    (0xC0) // TODO
 #define RECIPE_END 	(0)
 
@@ -33,7 +35,7 @@ extern unsigned char *recipes[];
 
 // This is a good way to define the status of the display.
 // This should be in a header (.h) file.
-enum status 
+enum recipe_status 
 {
 	status_running,
 	status_paused,
@@ -64,7 +66,45 @@ enum events
 	recipe_ended
 };
 
-void recipe1Step();
-void process_event( enum events one_event );
+// Struct for managing recipe information
+// r_idx 				->  Index of current recipe step
+// r_move				->  Number of steps required to complete current MOV
+// r_wait 			->  Number of steps required to complete current WAIT
+// r_loop				->  Starting step of current loop
+// r_loop_iter	->  Number of iterations left in current LOOP
+// r_status     ->  Current status of recipe
+typedef struct recipe_t
+{
+	int idx;
+	int move;
+	int wait;
+	int loop;
+	int loop_iter;
+	enum recipe_status status;
+	unsigned char *recipe;
+}recipe_type;
+
+// Struct for managining servo and recipe status
+// servo_positions -> Measured positions for servo
+// servo_position  -> Current position of servo
+// state 					 -> Current state of servo
+// recipe					 -> Recipe struct associated with servo
+typedef struct servo_t
+{
+	int *positions;
+	int position;
+	enum servo_states state;
+	recipe_type recipe;
+	int channel;
+}servo_type;
+
+extern servo_type servo1;
+extern servo_type servo2;
+
+void recipeStep();
+servo_type recipeStepHelper();
+void processInput(enum events one_event, enum events two_event);
+servo_type processEvent( enum events one_event, servo_type servo);
+void initServos();
 
 #endif
