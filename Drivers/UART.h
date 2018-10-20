@@ -2,6 +2,7 @@
 #define __STM32L476G_DISCOVERY_UART_H
 
 #include "stm32l476xx.h"
+#include <string.h>
 
 #define BufferSize 32
 
@@ -9,6 +10,7 @@
 // Useful functions
 char getChar(USART_TypeDef * USARTx);
 void newLine(USART_TypeDef * USARTx);
+void putLine(USART_TypeDef * USARTx, char * buffer);
 
 void UART2_Init(void);
 void UART2_GPIO_Init(void);

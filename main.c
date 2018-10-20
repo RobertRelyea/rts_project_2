@@ -12,7 +12,6 @@
 uint8_t buffer[BufferSize];
 uint8_t user_input[2];
 uint8_t input_idx = 0;
-
 uint8_t pos_idx = 0;
 	
 	/* TODO: 
@@ -59,17 +58,27 @@ int main(){
 					// Reset input buffer index
 					input_idx = 0;
 					// Handle user input
-					
+					if (user_input[0] == 'C' || user_input[0] == 'c') // Continue
+						process_event(resume);
+					else if (user_input[0] == 'P' || user_input[0] == 'p') // Pause
+						process_event(pause);
+					else if (user_input[0] == 'L' || user_input[0] == 'l') // Pause
+						process_event(move_left);
+					else if (user_input[0] == 'R' || user_input[0] == 'r') // Pause
+						process_event(move_right);
 				}
 			}
 		}
 		
+		/*
 		set_duty_CH1(servo1_positions[pos_idx]);
 		set_duty_CH2(servo2_positions[pos_idx++]);
 		if(pos_idx > 5)
 			pos_idx = 0;
+		*/
 		
-		waitFor(1000);
+		recipe1Step();
+		
+		waitFor(100);
 	} 
 }
-

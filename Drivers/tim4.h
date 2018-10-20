@@ -21,10 +21,6 @@ void set_duty_CH1(int duty_cycle_1);
 
 void set_duty_CH2(int duty_cycle_2);
 
-void timer4_start();
-
-void timer4_stop();
-
 uint32_t get_timer4_elapsed(uint32_t start_time);
 
  

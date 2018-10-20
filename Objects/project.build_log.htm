@@ -28,19 +28,19 @@ Project File Date:  10/19/2018
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
 compiling main.c...
-Drivers/pa6_config.h(12): warning:  #1-D: last line of file ends without a newline
-  #endif
-Drivers/tim4.h(24): warning:  #1295-D: Deprecated declaration timer4_start - give arg types
-  void timer4_start();
-Drivers/tim4.h(26): warning:  #1295-D: Deprecated declaration timer4_stop - give arg types
-  void timer4_stop();
-servo_recipes.h(63): warning:  #1-D: last line of file ends without a newline
-  #endif
-main.c: 4 warnings, 0 errors
+servo_recipes.h(66): warning:  #1295-D: Deprecated declaration recipe1Step - give arg types
+  void recipe1Step();
+main.c: 1 warning, 0 errors
+compiling servo_recipes.c...
+servo_recipes.h(66): warning:  #1295-D: Deprecated declaration recipe1Step - give arg types
+  void recipe1Step();
+servo_recipes.c(193): warning:  #1-D: last line of file ends without a newline
+  }
+servo_recipes.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=1972 RO-data=424 RW-data=52 ZI-data=1636  
+Program Size: Code=2644 RO-data=424 RW-data=104 ZI-data=1632  
 FromELF: creating hex file...
-".\Objects\project.axf" - 0 Error(s), 4 Warning(s).
+".\Objects\project.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -63,7 +63,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.1.2
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

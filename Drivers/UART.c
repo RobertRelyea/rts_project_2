@@ -23,6 +23,11 @@ void newLine(USART_TypeDef * USARTx)
 	USART_Write(USARTx, (uint8_t *)&txByte, 1);
 }
 
+void putLine(USART_TypeDef * USARTx, char * buffer)
+{
+	USART_Write(USART2,(uint8_t *)buffer, strlen((char *)buffer));
+  newLine(USART2);
+}
 
 
 void UART2_Init(void) {
