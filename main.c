@@ -41,6 +41,7 @@ enum events parseInput(char input)
 		return move_right;
 	else if (input == 'B' || input == 'b') // Pause
 		return begin;
+	return nop;
 }
 
 int main(){
@@ -63,6 +64,8 @@ int main(){
 	
 	while(1)
 	{
+		
+		uint32_t start_time = timer4_count();
 		// Check for user input
 		if(USART_Received(USART2))
 		{
@@ -90,6 +93,8 @@ int main(){
 		
 		recipeStep();
 		
-		waitFor(100);
+		uint32_t time_elapsed = get_timer4_elapsed(start_time);
+		
+		waitFor(100 - time_elapsed);
 	} 
 }

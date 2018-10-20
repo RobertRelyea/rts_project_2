@@ -17,7 +17,7 @@ extern int servo2_positions[6];
 #define LOOP        (0x80)
 #define END_LOOP    (0xA0)
 #define SKIP        (0x30)
-#define CUST_TWO    (0xC0) // TODO
+#define JUMP        (0xC0) // TODO
 #define RECIPE_END 	(0)
 
 #define NUM_SERVO_POS (6)
@@ -63,7 +63,8 @@ enum events
 	pause,
 	resume,
 	begin,
-	recipe_ended
+	recipe_ended,
+	nop
 };
 
 // Struct for managing recipe information
@@ -80,6 +81,7 @@ typedef struct recipe_t
 	int wait;
 	int loop;
 	int loop_iter;
+	int length;
 	enum recipe_status status;
 	unsigned char *recipe;
 }recipe_type;

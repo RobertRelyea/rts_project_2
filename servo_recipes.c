@@ -1,30 +1,85 @@
 #include "servo_recipes.h"
 
-// Examples of simple recipes
-// Note that, because the bottom 5 bits are zeros adding or bitwise or'ing
-// in the values for the bottom 5 bits are equivalent. However, using a bitwise
-// or is better at communicating your purpose.
+int servo1_positions[] = {5, 6, 10, 13, 17, 21};
+int servo2_positions[] = {5, 6, 10, 13, 17, 21};
+
+// Simple Recipes
 unsigned char recipe1[] = {  
-	LOOP+3,
+	LOOP+5,
 	MOV+3, 
 	MOV+5, 
-//	WAIT+4,
+	WAIT+10,
 	END_LOOP,
 	MOV+4,
 	WAIT+3,
 	MOV+1, 
 	RECIPE_END };
 
-unsigned char recipe2[] = { MOV | 5, MOV | 2, RECIPE_END } ;
+unsigned char recipe2[] = { 
+	LOOP+31,
+	MOV+5, 
+	MOV+2, 
+	END_LOOP,
+	RECIPE_END };
 
-int servo1_positions[] = {5, 6, 10, 13, 17, 21};
-int servo2_positions[] = {5, 6, 10, 13, 17, 21};
+unsigned char recipe_jump[] = {
+	MOV+3,
+	JUMP+3,
+	WAIT+2,
+	MOV+2,
+	MOV+0,
+	RECIPE_END };
+
+unsigned char recipe_demo[] = {
+	MOV+0,
+	MOV+5,
+	MOV+0,
+	MOV+3,
+	LOOP+0,
+	MOV+1,
+	MOV+4,
+	END_LOOP,
+	MOV+0,
+	MOV+2,
+	WAIT+0,
+	MOV+3,
+	WAIT+0,
+	MOV+2,
+	MOV+3,
+	WAIT+31,
+	WAIT+31,
+	WAIT+31,
+	MOV+4,
+	RECIPE_END
+};
 
 // Declare servo structs
 servo_type servo1;
 servo_type servo2;
 recipe_type recipe_t1;
 recipe_type recipe_t2;
+
+// Code to start the move (adjust PWM) and start the timing delay based on the
+// current position.
+static servo_type startMove( enum servo_states new_state, servo_type servo, unsigned char position )
+{
+	servo.state = new_state;
+	servo.recipe.move = (servo.position > position) ? 
+		(servo.position - position) : (position - servo.position);
+	servo.position = position;
+	setDuty(servo.channel, servo.positions[position]);
+	return servo;
+}
+
+int recipeLength(recipe_type recipe)
+{
+	int len = 0;
+	while(!((recipe.recipe[len] & 0xE0) == RECIPE_END))
+		len++;
+	
+	return len + 1;
+}
+
 
 void initServos()
 {
@@ -51,7 +106,8 @@ void initServos()
 	recipe_t1.loop = 0;
 	recipe_t1.loop_iter = 0;
 	recipe_t1.status = status_paused;
-	recipe_t1.recipe = recipe1;
+	recipe_t1.recipe = recipe_jump;
+	recipe_t1.length = recipeLength(recipe_t1);
 	servo1.recipe = recipe_t1;
 	
 	recipe_t2.idx = 0;
@@ -61,19 +117,12 @@ void initServos()
 	recipe_t2.loop_iter = 0;
 	recipe_t2.status = status_paused;
 	recipe_t2.recipe = recipe2;
+	recipe_t2.length = recipeLength(recipe_t2);
 	servo2.recipe = recipe_t2;
-}
-
-// Code to start the move (adjust PWM) and start the timing delay based on the
-// current position.
-static servo_type startMove( enum servo_states new_state, servo_type servo, unsigned char position )
-{
-	servo.state = new_state;
-	servo.recipe.move = (servo.position > position) ? 
-		(servo.position - position) : (position - servo.position);
-	servo.position = position;
-	setDuty(servo.channel, servo.positions[position]);
-	return servo;
+	
+	// Move servos to starting position (0)
+	servo1 = startMove(state_moving, servo1, 0);
+	servo2 = startMove(state_moving, servo2, 0);
 }
 
 
@@ -99,10 +148,15 @@ servo_type recipeStepHelper(servo_type servo)
 	// Extract the param
 	unsigned char param = (step & 0x1F);
 	
+	if (param > 31)
+	{
+		servo.recipe.status = status_command_error;
+		return servo;
+	}
+	
 	switch(command)
 	{
 		case MOV:
-			//putLine(USART2, "Moving");
 			if(param > NUM_SERVO_POS - 1)
 			{
 				// Out of range error
@@ -123,7 +177,6 @@ servo_type recipeStepHelper(servo_type servo)
 			break;
 			
 		case WAIT:
-			//putLine(USART2, "Waiting");
 			if (servo.recipe.wait > 1) // WAIT has commenced
 				servo.recipe.wait--;
 			else if (servo.recipe.wait == 1) // WAIT will complete
@@ -132,11 +185,13 @@ servo_type recipeStepHelper(servo_type servo)
 				servo.recipe.idx++;
 			}
 			else // New WAIT command
-				servo.recipe.wait = param;
+				if (param == 0)
+					servo.recipe.idx++;
+				else
+					servo.recipe.wait = param;
 			break;
 			
 		case LOOP:
-			//putLine(USART2, "Loopin");
 			// Check for nested loop
 			if (servo.recipe.loop != 0)
 			{
@@ -153,7 +208,6 @@ servo_type recipeStepHelper(servo_type servo)
 			break;
 		
 		case END_LOOP:
-			//putLine(USART2, "End loopin");
 			if (servo.recipe.loop_iter > 0) // 
 			{
 				servo.recipe.loop_iter--;
@@ -165,9 +219,39 @@ servo_type recipeStepHelper(servo_type servo)
 				servo.recipe.idx++;
 			}
 			break;
+			
+		case SKIP:
+			// Ensure we do not skip over the end of the recipe
+			if(servo.recipe.idx + 1 > servo.recipe.length)
+			{
+				// Command error
+				servo.recipe.status = status_command_error;
+			}
+			else
+			{
+				// Skip next instruction
+				servo.recipe.idx += 2;
+			}
+			
+		case JUMP:
+			// Ensure we do not jump over the end of the recipe
+			if(servo.recipe.idx + param > servo.recipe.length)
+			{
+				// Command error
+				servo.recipe.status = status_command_error;
+			}
+			else
+			{
+				// Condition for jump: if the servo is at position 3 or greater, 
+				// jump ahead by param steps in the recipe.
+				if (servo.position > 2)
+					servo.recipe.idx += param;
+				else
+					servo.recipe.idx++;
+			}
+			
 		
 		case RECIPE_END:
-			//putLine(USART2, "Ending");
 			servo.state = state_recipe_ended;
 			break;	
 	}
@@ -218,6 +302,8 @@ servo_type processEvent( enum events event, servo_type servo)
 			case state_unknown :
 				break;
 			case state_recipe_ended :
+				break;
+			case state_moving:
 				break;
 		}
 	}	
