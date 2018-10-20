@@ -10,7 +10,7 @@ unsigned char recipe1[] = {
 	LOOP+3,
 	MOV+3, 
 	MOV+5, 
-	WAIT+4,
+//	WAIT+4,
 	END_LOOP,
 	MOV+4,
 	WAIT+3,
@@ -31,6 +31,10 @@ int servo2_position = 0;
 // Indexes for each recipe
 int r1_idx = 0;
 int r2_idx = 0;
+
+// Move variables
+unsigned char r1_move = 0;
+unsigned char r2_move = 0;
 
 // Wait variables
 unsigned char r1_wait = 0;
@@ -54,6 +58,7 @@ static enum servo_states servo1_state = state_unknown;
 static void startMove1( enum servo_states new_state, unsigned char position )
 {
 	servo1_state = new_state;
+	r1_move = (servo1_position > position) ? (servo1_position - position) : (position - servo1_position);
 	servo1_position = position;
 	set_duty_CH1(servo1_positions[position]);
 }
@@ -89,6 +94,8 @@ void recipe1Step()
 				// Move servo
 				startMove1(state_moving, param);
 			}
+			else if (r1_move > 0) // Still moving...
+				r1_move--;
 			else
 			{
 				servo1_state = state_at_position;
