@@ -1,7 +1,7 @@
 #include "servo_recipes.h"
 
-int servo1_positions[] = {5, 6, 10, 13, 17, 21};
-int servo2_positions[] = {5, 6, 10, 13, 17, 21};
+int servo1_positions[] = {5, 8, 10, 13, 17, 21};
+int servo2_positions[] = {5, 8, 10, 13, 17, 21};
 
 // Simple Recipes
 unsigned char recipe1[] = {  
@@ -22,15 +22,33 @@ unsigned char recipe2[] = {
 	END_LOOP,
 	RECIPE_END };
 
-unsigned char recipe_jump[] = {
+unsigned char recipe_skip[] = {
+	MOV+5,
+	SKIP,
+	MOV+2,
 	MOV+3,
-  LOOP+2,
-	LOOP+4,
+	RECIPE_END};
+
+unsigned char recipe_continue[] = {
+	MOV+5,
 	WAIT+2,
 	MOV+2,
 	MOV+0,
-	END_LOOP,
-	END_LOOP,
+	RECIPE_END,
+	MOV+5,
+	RECIPE_END };
+
+unsigned char recipe_jump[] = {
+	MOV+3,
+	WAIT+2,
+	JUMP+2,
+	MOV+0,
+	MOV+5, // should end up here
+	WAIT+20,
+	MOV+2,
+	JUMP+2,
+	MOV+5, // Should continue here
+	MOV+0,
 	RECIPE_END };
 
 unsigned char recipe_demo[] = {
@@ -55,6 +73,36 @@ unsigned char recipe_demo[] = {
 	MOV+4,
 	RECIPE_END
 };
+unsigned char recipe_verify_moves[] = {
+	MOV+0,
+	MOV+1,
+	MOV+2,
+	MOV+3,
+	MOV+4,
+	MOV+5,
+	RECIPE_END
+	};
+unsigned char recipe_error_loop[] = {
+	MOV+5,
+	WAIT+2,
+	MOV+2,
+	MOV+0,
+	MOV+5,
+	LOOP+3,
+	LOOP+2,
+	MOV+5,
+	RECIPE_END };
+
+	unsigned char recipe_error_mov[] = {
+	MOV+5,
+	WAIT+2,
+	MOV+2,
+	MOV+0,
+	MOV+9,
+	MOV+5,
+	RECIPE_END };
+
+	
 
 // Declare servo structs
 servo_type servo1;
@@ -109,7 +157,7 @@ void initServos()
 	recipe_t1.loop = 0;
 	recipe_t1.loop_iter = 0;
 	recipe_t1.status = status_paused;
-	recipe_t1.recipe = recipe_jump;
+	recipe_t1.recipe =  recipe_jump;
 	recipe_t1.length = recipeLength(recipe_t1);
 	servo1.recipe = recipe_t1;
 	
@@ -225,7 +273,7 @@ servo_type recipeStepHelper(servo_type servo)
 			
 		case SKIP:
 			// Ensure we do not skip over the end of the recipe
-			if(servo.recipe.idx + 1 > servo.recipe.length)
+			if(servo.recipe.idx + 2 > servo.recipe.length)
 			{
 				// Command error
 				servo.recipe.status = status_command_error;
@@ -235,10 +283,11 @@ servo_type recipeStepHelper(servo_type servo)
 				// Skip next instruction
 				servo.recipe.idx += 2;
 			}
+			break;
 			
 		case JUMP:
 			// Ensure we do not jump over the end of the recipe
-			if(servo.recipe.idx + param > servo.recipe.length)
+			if(servo.recipe.idx + param > servo.recipe.length || param == 0)
 			{
 				// Command error
 				servo.recipe.status = status_command_error;
@@ -252,10 +301,12 @@ servo_type recipeStepHelper(servo_type servo)
 				else
 					servo.recipe.idx++;
 			}
+			break;
 			
 		
 		case RECIPE_END:
 			servo.state = state_recipe_ended;
+			servo.recipe.status = status_ended;
 			break;	
 	}
 	return servo;
@@ -283,7 +334,8 @@ servo_type processEvent( enum events event, servo_type servo)
 		servo.recipe.status = status_paused;
 	}
 	
-	if (event == resume)
+	if (event == resume && servo.recipe.status != status_command_error && 
+		  servo.recipe.status != status_nested_error)
 	{
 		servo.recipe.status = status_running;
 	}

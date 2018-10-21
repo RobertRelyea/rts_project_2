@@ -352,32 +352,32 @@ Image Symbol Table
     i.get_timer2_elapsed                     0x0800082e   Section        0  tim4.o(i.get_timer2_elapsed)
     i.initServos                             0x08000844   Section        0  servo_recipes.o(i.initServos)
     i.main                                   0x08000954   Section        0  main.o(i.main)
-    i.newLine                                0x08000a48   Section        0  uart.o(i.newLine)
-    i.parseInput                             0x08000a6a   Section        0  main.o(i.parseInput)
-    i.processEvent                           0x08000aac   Section        0  servo_recipes.o(i.processEvent)
-    i.processInput                           0x08000b7c   Section        0  servo_recipes.o(i.processInput)
-    i.putLine                                0x08000bd8   Section        0  uart.o(i.putLine)
-    i.recipeLength                           0x08000bf8   Section        0  servo_recipes.o(i.recipeLength)
-    i.recipeStep                             0x08000c14   Section        0  servo_recipes.o(i.recipeStep)
-    i.recipeStepHelper                       0x08000c68   Section        0  servo_recipes.o(i.recipeStepHelper)
-    i.setDuty                                0x08000e1a   Section        0  tim4.o(i.setDuty)
-    i.startMove                              0x08000e50   Section        0  servo_recipes.o(i.startMove)
-    startMove                                0x08000e51   Thumb Code    62  servo_recipes.o(i.startMove)
-    i.timer2_count                           0x08000e8e   Section        0  tim4.o(i.timer2_count)
-    i.timer2_init                            0x08000e98   Section        0  tim4.o(i.timer2_init)
-    i.timer2_start                           0x08000fb0   Section        0  tim4.o(i.timer2_start)
-    i.wait                                   0x08000fc2   Section        0  main.o(i.wait)
-    i.waitFor                                0x08000fd8   Section        0  main.o(i.waitFor)
-    x$fpl$fpinit                             0x08000ff2   Section       10  fpinit.o(x$fpl$fpinit)
-    $v0                                      0x08000ff2   Number         0  fpinit.o(x$fpl$fpinit)
-    .data                                    0x20000000   Section       91  servo_recipes.o(.data)
-    .bss                                     0x2000005c   Section      160  servo_recipes.o(.bss)
-    .bss                                     0x200000fc   Section       96  libspace.o(.bss)
-    HEAP                                     0x20000160   Section      512  startup_stm32l476xx.o(HEAP)
-    Heap_Mem                                 0x20000160   Data         512  startup_stm32l476xx.o(HEAP)
-    STACK                                    0x20000360   Section     1024  startup_stm32l476xx.o(STACK)
-    Stack_Mem                                0x20000360   Data        1024  startup_stm32l476xx.o(STACK)
-    __initial_sp                             0x20000760   Data           0  startup_stm32l476xx.o(STACK)
+    i.newLine                                0x08000a50   Section        0  uart.o(i.newLine)
+    i.parseInput                             0x08000a72   Section        0  main.o(i.parseInput)
+    i.processEvent                           0x08000ab4   Section        0  servo_recipes.o(i.processEvent)
+    i.processInput                           0x08000b94   Section        0  servo_recipes.o(i.processInput)
+    i.putLine                                0x08000bf0   Section        0  uart.o(i.putLine)
+    i.recipeLength                           0x08000c10   Section        0  servo_recipes.o(i.recipeLength)
+    i.recipeStep                             0x08000c2c   Section        0  servo_recipes.o(i.recipeStep)
+    i.recipeStepHelper                       0x08000c80   Section        0  servo_recipes.o(i.recipeStepHelper)
+    i.setDuty                                0x08000e34   Section        0  tim4.o(i.setDuty)
+    i.startMove                              0x08000e6a   Section        0  servo_recipes.o(i.startMove)
+    startMove                                0x08000e6b   Thumb Code    62  servo_recipes.o(i.startMove)
+    i.timer2_count                           0x08000ea8   Section        0  tim4.o(i.timer2_count)
+    i.timer2_init                            0x08000eb0   Section        0  tim4.o(i.timer2_init)
+    i.timer2_start                           0x08000fc8   Section        0  tim4.o(i.timer2_start)
+    i.wait                                   0x08000fda   Section        0  main.o(i.wait)
+    i.waitFor                                0x08000ff0   Section        0  main.o(i.waitFor)
+    x$fpl$fpinit                             0x0800100a   Section       10  fpinit.o(x$fpl$fpinit)
+    $v0                                      0x0800100a   Number         0  fpinit.o(x$fpl$fpinit)
+    .data                                    0x20000000   Section      128  servo_recipes.o(.data)
+    .bss                                     0x20000080   Section      160  servo_recipes.o(.bss)
+    .bss                                     0x20000120   Section       96  libspace.o(.bss)
+    HEAP                                     0x20000180   Section      512  startup_stm32l476xx.o(HEAP)
+    Heap_Mem                                 0x20000180   Data         512  startup_stm32l476xx.o(HEAP)
+    STACK                                    0x20000380   Section     1024  startup_stm32l476xx.o(STACK)
+    Stack_Mem                                0x20000380   Data        1024  startup_stm32l476xx.o(STACK)
+    __initial_sp                             0x20000780   Data           0  startup_stm32l476xx.o(STACK)
 
     Global Symbols
 
@@ -416,11 +416,11 @@ Image Symbol Table
     _terminate_alloc                          - Undefined Weak Reference
     _terminate_user_alloc                     - Undefined Weak Reference
     _terminateio                              - Undefined Weak Reference
-    Image$$RW_IRAM1$$Length                  0x0000005c   Number         0  anon$$obj.o ABSOLUTE
-    Image$$RW_IRAM1$$RW$$Length              0x0000005c   Number         0  anon$$obj.o ABSOLUTE
+    Image$$RW_IRAM1$$Length                  0x00000080   Number         0  anon$$obj.o ABSOLUTE
+    Image$$RW_IRAM1$$RW$$Length              0x00000080   Number         0  anon$$obj.o ABSOLUTE
     __Vectors_Size                           0x00000188   Number         0  startup_stm32l476xx.o ABSOLUTE
-    Image$$RW_IRAM1$$ZI$$Length              0x00000704   Number         0  anon$$obj.o ABSOLUTE
-    Image$$ER_IROM1$$RO$$Length              0x0000101c   Number         0  anon$$obj.o ABSOLUTE
+    Image$$RW_IRAM1$$ZI$$Length              0x00000700   Number         0  anon$$obj.o ABSOLUTE
+    Image$$ER_IROM1$$RO$$Length              0x00001034   Number         0  anon$$obj.o ABSOLUTE
     Image$$ER_IROM1$$RO$$Base                0x08000000   Number         0  anon$$obj.o ABSOLUTE
     Load$$ER_IROM1$$Base                     0x08000000   Number         0  anon$$obj.o ABSOLUTE
     __Vectors                                0x08000000   Data           4  startup_stm32l476xx.o(RESET)
@@ -598,32 +598,32 @@ Image Symbol Table
     getChar                                  0x08000813   Thumb Code    28  uart.o(i.getChar)
     get_timer2_elapsed                       0x0800082f   Thumb Code    20  tim4.o(i.get_timer2_elapsed)
     initServos                               0x08000845   Thumb Code   240  servo_recipes.o(i.initServos)
-    main                                     0x08000955   Thumb Code   232  main.o(i.main)
-    newLine                                  0x08000a49   Thumb Code    34  uart.o(i.newLine)
-    parseInput                               0x08000a6b   Thumb Code    66  main.o(i.parseInput)
-    processEvent                             0x08000aad   Thumb Code   206  servo_recipes.o(i.processEvent)
-    processInput                             0x08000b7d   Thumb Code    84  servo_recipes.o(i.processInput)
-    putLine                                  0x08000bd9   Thumb Code    26  uart.o(i.putLine)
-    recipeLength                             0x08000bf9   Thumb Code    26  servo_recipes.o(i.recipeLength)
-    recipeStep                               0x08000c15   Thumb Code    76  servo_recipes.o(i.recipeStep)
-    recipeStepHelper                         0x08000c69   Thumb Code   434  servo_recipes.o(i.recipeStepHelper)
-    setDuty                                  0x08000e1b   Thumb Code    54  tim4.o(i.setDuty)
-    timer2_count                             0x08000e8f   Thumb Code     8  tim4.o(i.timer2_count)
-    timer2_init                              0x08000e99   Thumb Code   274  tim4.o(i.timer2_init)
-    timer2_start                             0x08000fb1   Thumb Code    18  tim4.o(i.timer2_start)
-    wait                                     0x08000fc3   Thumb Code    22  main.o(i.wait)
-    waitFor                                  0x08000fd9   Thumb Code    26  main.o(i.waitFor)
-    _fp_init                                 0x08000ff3   Thumb Code    10  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x08000ffb   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x08000ffb   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    Region$$Table$$Base                      0x08000ffc   Number         0  anon$$obj.o(Region$$Table)
-    Image$$ER_IROM1$$RO$$Limit               0x0800101c   Number         0  anon$$obj.o ABSOLUTE
-    Image$$ER_IROM1$$RW$$Base                0x0800101c   Number         0  anon$$obj.o ABSOLUTE
-    Image$$ER_IROM1$$RW$$Limit               0x0800101c   Number         0  anon$$obj.o ABSOLUTE
-    Image$$ER_IROM1$$ZI$$Base                0x0800101c   Number         0  anon$$obj.o ABSOLUTE
-    Image$$ER_IROM1$$ZI$$Limit               0x0800101c   Number         0  anon$$obj.o ABSOLUTE
-    Load$$RW_IRAM1$$Base                     0x0800101c   Number         0  anon$$obj.o ABSOLUTE
-    Region$$Table$$Limit                     0x0800101c   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x08000955   Thumb Code   240  main.o(i.main)
+    newLine                                  0x08000a51   Thumb Code    34  uart.o(i.newLine)
+    parseInput                               0x08000a73   Thumb Code    66  main.o(i.parseInput)
+    processEvent                             0x08000ab5   Thumb Code   222  servo_recipes.o(i.processEvent)
+    processInput                             0x08000b95   Thumb Code    84  servo_recipes.o(i.processInput)
+    putLine                                  0x08000bf1   Thumb Code    26  uart.o(i.putLine)
+    recipeLength                             0x08000c11   Thumb Code    26  servo_recipes.o(i.recipeLength)
+    recipeStep                               0x08000c2d   Thumb Code    76  servo_recipes.o(i.recipeStep)
+    recipeStepHelper                         0x08000c81   Thumb Code   436  servo_recipes.o(i.recipeStepHelper)
+    setDuty                                  0x08000e35   Thumb Code    54  tim4.o(i.setDuty)
+    timer2_count                             0x08000ea9   Thumb Code     8  tim4.o(i.timer2_count)
+    timer2_init                              0x08000eb1   Thumb Code   274  tim4.o(i.timer2_init)
+    timer2_start                             0x08000fc9   Thumb Code    18  tim4.o(i.timer2_start)
+    wait                                     0x08000fdb   Thumb Code    22  main.o(i.wait)
+    waitFor                                  0x08000ff1   Thumb Code    26  main.o(i.waitFor)
+    _fp_init                                 0x0800100b   Thumb Code    10  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x08001013   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x08001013   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    Region$$Table$$Base                      0x08001014   Number         0  anon$$obj.o(Region$$Table)
+    Image$$ER_IROM1$$RO$$Limit               0x08001034   Number         0  anon$$obj.o ABSOLUTE
+    Image$$ER_IROM1$$RW$$Base                0x08001034   Number         0  anon$$obj.o ABSOLUTE
+    Image$$ER_IROM1$$RW$$Limit               0x08001034   Number         0  anon$$obj.o ABSOLUTE
+    Image$$ER_IROM1$$ZI$$Base                0x08001034   Number         0  anon$$obj.o ABSOLUTE
+    Image$$ER_IROM1$$ZI$$Limit               0x08001034   Number         0  anon$$obj.o ABSOLUTE
+    Load$$RW_IRAM1$$Base                     0x08001034   Number         0  anon$$obj.o ABSOLUTE
+    Region$$Table$$Limit                     0x08001034   Number         0  anon$$obj.o(Region$$Table)
     Image$$RW_IRAM1$$Base                    0x20000000   Number         0  anon$$obj.o ABSOLUTE
     Image$$RW_IRAM1$$RO$$Base                0x20000000   Number         0  anon$$obj.o ABSOLUTE
     Image$$RW_IRAM1$$RW$$Base                0x20000000   Number         0  anon$$obj.o ABSOLUTE
@@ -631,18 +631,23 @@ Image Symbol Table
     servo2_positions                         0x20000018   Data          24  servo_recipes.o(.data)
     recipe1                                  0x20000030   Data           9  servo_recipes.o(.data)
     recipe2                                  0x20000039   Data           5  servo_recipes.o(.data)
-    recipe_jump                              0x2000003e   Data           9  servo_recipes.o(.data)
-    recipe_demo                              0x20000047   Data          20  servo_recipes.o(.data)
-    Image$$RW_IRAM1$$Limit                   0x2000005c   Number         0  anon$$obj.o ABSOLUTE
-    Image$$RW_IRAM1$$RW$$Limit               0x2000005c   Number         0  anon$$obj.o ABSOLUTE
-    Image$$RW_IRAM1$$ZI$$Base                0x2000005c   Number         0  anon$$obj.o ABSOLUTE
-    servo1                                   0x2000005c   Data          48  servo_recipes.o(.bss)
-    servo2                                   0x2000008c   Data          48  servo_recipes.o(.bss)
-    recipe_t1                                0x200000bc   Data          32  servo_recipes.o(.bss)
-    recipe_t2                                0x200000dc   Data          32  servo_recipes.o(.bss)
-    __libspace_start                         0x200000fc   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x2000015c   Data           0  libspace.o(.bss)
-    Image$$RW_IRAM1$$ZI$$Limit               0x20000760   Number         0  anon$$obj.o ABSOLUTE
+    recipe_skip                              0x2000003e   Data           5  servo_recipes.o(.data)
+    recipe_continue                          0x20000043   Data           7  servo_recipes.o(.data)
+    recipe_jump                              0x2000004a   Data          11  servo_recipes.o(.data)
+    recipe_demo                              0x20000055   Data          20  servo_recipes.o(.data)
+    recipe_verify_moves                      0x20000069   Data           7  servo_recipes.o(.data)
+    recipe_error_loop                        0x20000070   Data           9  servo_recipes.o(.data)
+    recipe_error_mov                         0x20000079   Data           7  servo_recipes.o(.data)
+    Image$$RW_IRAM1$$Limit                   0x20000080   Number         0  anon$$obj.o ABSOLUTE
+    Image$$RW_IRAM1$$RW$$Limit               0x20000080   Number         0  anon$$obj.o ABSOLUTE
+    Image$$RW_IRAM1$$ZI$$Base                0x20000080   Number         0  anon$$obj.o ABSOLUTE
+    servo1                                   0x20000080   Data          48  servo_recipes.o(.bss)
+    servo2                                   0x200000b0   Data          48  servo_recipes.o(.bss)
+    recipe_t1                                0x200000e0   Data          32  servo_recipes.o(.bss)
+    recipe_t2                                0x20000100   Data          32  servo_recipes.o(.bss)
+    __libspace_start                         0x20000120   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x20000180   Data           0  libspace.o(.bss)
+    Image$$RW_IRAM1$$ZI$$Limit               0x20000780   Number         0  anon$$obj.o ABSOLUTE
 
 
 
@@ -652,9 +657,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000189
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00001078, Max: 0x00100000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000010b4, Max: 0x00100000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000101c, Max: 0x00100000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001034, Max: 0x00100000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -734,40 +739,37 @@ Memory Map of the image
     0x0800082e   0x0800082e   0x00000014   Code   RO          425    i.get_timer2_elapsed  tim4.o
     0x08000842   0x08000842   0x00000002   PAD
     0x08000844   0x08000844   0x00000110   Code   RO          104    i.initServos        servo_recipes.o
-    0x08000954   0x08000954   0x000000f4   Code   RO            4    i.main              main.o
-    0x08000a48   0x08000a48   0x00000022   Code   RO          230    i.newLine           uart.o
-    0x08000a6a   0x08000a6a   0x00000042   Code   RO            5    i.parseInput        main.o
-    0x08000aac   0x08000aac   0x000000ce   Code   RO          105    i.processEvent      servo_recipes.o
-    0x08000b7a   0x08000b7a   0x00000002   PAD
-    0x08000b7c   0x08000b7c   0x0000005c   Code   RO          106    i.processInput      servo_recipes.o
-    0x08000bd8   0x08000bd8   0x00000020   Code   RO          231    i.putLine           uart.o
-    0x08000bf8   0x08000bf8   0x0000001a   Code   RO          107    i.recipeLength      servo_recipes.o
-    0x08000c12   0x08000c12   0x00000002   PAD
-    0x08000c14   0x08000c14   0x00000054   Code   RO          108    i.recipeStep        servo_recipes.o
-    0x08000c68   0x08000c68   0x000001b2   Code   RO          109    i.recipeStepHelper  servo_recipes.o
-    0x08000e1a   0x08000e1a   0x00000036   Code   RO          426    i.setDuty           tim4.o
-    0x08000e50   0x08000e50   0x0000003e   Code   RO          110    i.startMove         servo_recipes.o
-    0x08000e8e   0x08000e8e   0x00000008   Code   RO          427    i.timer2_count      tim4.o
-    0x08000e96   0x08000e96   0x00000002   PAD
-    0x08000e98   0x08000e98   0x00000118   Code   RO          429    i.timer2_init       tim4.o
-    0x08000fb0   0x08000fb0   0x00000012   Code   RO          430    i.timer2_start      tim4.o
-    0x08000fc2   0x08000fc2   0x00000016   Code   RO            6    i.wait              main.o
-    0x08000fd8   0x08000fd8   0x0000001a   Code   RO            7    i.waitFor           main.o
-    0x08000ff2   0x08000ff2   0x0000000a   Code   RO          580    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x08000ffc   0x08000ffc   0x00000020   Data   RO          648    Region$$Table       anon$$obj.o
+    0x08000954   0x08000954   0x000000fc   Code   RO            4    i.main              main.o
+    0x08000a50   0x08000a50   0x00000022   Code   RO          230    i.newLine           uart.o
+    0x08000a72   0x08000a72   0x00000042   Code   RO            5    i.parseInput        main.o
+    0x08000ab4   0x08000ab4   0x000000de   Code   RO          105    i.processEvent      servo_recipes.o
+    0x08000b92   0x08000b92   0x00000002   PAD
+    0x08000b94   0x08000b94   0x0000005c   Code   RO          106    i.processInput      servo_recipes.o
+    0x08000bf0   0x08000bf0   0x00000020   Code   RO          231    i.putLine           uart.o
+    0x08000c10   0x08000c10   0x0000001a   Code   RO          107    i.recipeLength      servo_recipes.o
+    0x08000c2a   0x08000c2a   0x00000002   PAD
+    0x08000c2c   0x08000c2c   0x00000054   Code   RO          108    i.recipeStep        servo_recipes.o
+    0x08000c80   0x08000c80   0x000001b4   Code   RO          109    i.recipeStepHelper  servo_recipes.o
+    0x08000e34   0x08000e34   0x00000036   Code   RO          426    i.setDuty           tim4.o
+    0x08000e6a   0x08000e6a   0x0000003e   Code   RO          110    i.startMove         servo_recipes.o
+    0x08000ea8   0x08000ea8   0x00000008   Code   RO          427    i.timer2_count      tim4.o
+    0x08000eb0   0x08000eb0   0x00000118   Code   RO          429    i.timer2_init       tim4.o
+    0x08000fc8   0x08000fc8   0x00000012   Code   RO          430    i.timer2_start      tim4.o
+    0x08000fda   0x08000fda   0x00000016   Code   RO            6    i.wait              main.o
+    0x08000ff0   0x08000ff0   0x0000001a   Code   RO            7    i.waitFor           main.o
+    0x0800100a   0x0800100a   0x0000000a   Code   RO          580    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x08001014   0x08001014   0x00000020   Data   RO          648    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x0800101c, Size: 0x00000760, Max: 0x00018000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08001034, Size: 0x00000780, Max: 0x00018000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x0800101c   0x0000005b   Data   RW          112    .data               servo_recipes.o
-    0x2000005b   0x08001077   0x00000001   PAD
-    0x2000005c        -       0x000000a0   Zero   RW          111    .bss                servo_recipes.o
-    0x200000fc        -       0x00000060   Zero   RW          522    .bss                c_w.l(libspace.o)
-    0x2000015c   0x08001077   0x00000004   PAD
-    0x20000160        -       0x00000200   Zero   RW          185    HEAP                startup_stm32l476xx.o
-    0x20000360        -       0x00000400   Zero   RW          184    STACK               startup_stm32l476xx.o
+    0x20000000   0x08001034   0x00000080   Data   RW          112    .data               servo_recipes.o
+    0x20000080        -       0x000000a0   Zero   RW          111    .bss                servo_recipes.o
+    0x20000120        -       0x00000060   Zero   RW          522    .bss                c_w.l(libspace.o)
+    0x20000180        -       0x00000200   Zero   RW          185    HEAP                startup_stm32l476xx.o
+    0x20000380        -       0x00000400   Zero   RW          184    STACK               startup_stm32l476xx.o
 
 
 ==============================================================================
@@ -778,17 +780,17 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
        236         36          0          0          0       2101   led.o
-       358         12          0          0          0       8195   main.o
-      1176         62          0         91        160     662178   servo_recipes.o
+       366         18          0          0          0       8223   main.o
+      1194         56          0        128        160     662509   servo_recipes.o
        132         42        392          0       1536        808   startup_stm32l476xx.o
        388          8          0          0          0        612   sysclock.o
        380          6          0          0          0       2459   tim4.o
        568         38          0          0          0       5400   uart.o
 
     ----------------------------------------------------------------------
-      3246        204        424         92       1696     681753   Object Totals
+      3270        204        424        128       1696     682112   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         8          0          0          1          0          0   (incl. Padding)
+         6          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -819,8 +821,8 @@ Image component sizes
         10          0          0          0          0        116   fpinit.o
 
     ----------------------------------------------------------------------
-       454         16          0          0        100        856   Library Totals
-         6          0          0          0          4          0   (incl. Padding)
+       454         16          0          0         96        856   Library Totals
+         6          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -830,7 +832,7 @@ Image component sizes
         10          0          0          0          0        116   fz_wm.l
 
     ----------------------------------------------------------------------
-       454         16          0          0        100        856   Library Totals
+       454         16          0          0         96        856   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -839,15 +841,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      3700        220        424         92       1796     679649   Grand Totals
-      3700        220        424         92       1796     679649   ELF Image Totals
-      3700        220        424         92          0          0   ROM Totals
+      3724        220        424        128       1792     680008   Grand Totals
+      3724        220        424        128       1792     680008   ELF Image Totals
+      3724        220        424        128          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 4124 (   4.03kB)
-    Total RW  Size (RW Data + ZI Data)              1888 (   1.84kB)
-    Total ROM Size (Code + RO Data + RW Data)       4216 (   4.12kB)
+    Total RO  Size (Code + RO Data)                 4148 (   4.05kB)
+    Total RW  Size (RW Data + ZI Data)              1920 (   1.88kB)
+    Total ROM Size (Code + RO Data + RW Data)       4276 (   4.18kB)
 
 ==============================================================================
 

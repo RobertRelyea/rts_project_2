@@ -115,6 +115,10 @@ int main(){
 			  Green_LED_On();
 			  Red_LED_On();
 			  break;
+			case status_ended:
+				Red_LED_Off();
+			  Green_LED_Off();
+			  break;
 		}			
 		recipeStep();
 		

@@ -16,7 +16,7 @@ extern int servo2_positions[6];
 #define WAIT        (0x40)
 #define LOOP        (0x80)
 #define END_LOOP    (0xA0)
-#define SKIP        (0x30)
+#define SKIP        (0x60)
 #define JUMP        (0xC0) // TODO
 #define RECIPE_END 	(0)
 
@@ -39,6 +39,7 @@ enum recipe_status
 {
 	status_running,
 	status_paused,
+	status_ended,
 	status_command_error,
 	status_nested_error 
 } ;
