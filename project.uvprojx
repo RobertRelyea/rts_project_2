@@ -396,6 +396,16 @@
               <FileType>1</FileType>
               <FilePath>.\servo_recipes.c</FilePath>
             </File>
+            <File>
+              <FileName>servo_states.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\servo_states.c</FilePath>
+            </File>
+            <File>
+              <FileName>servo_states.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\servo_states.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -410,11 +420,6 @@
               <FileName>startup_stm32l476xx.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\startup_stm32l476xx.s</FilePath>
-            </File>
-            <File>
-              <FileName>input_pa1.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Drivers\input_pa1.h</FilePath>
             </File>
             <File>
               <FileName>input_pa1.c</FileName>
@@ -437,29 +442,9 @@
               <FilePath>.\Drivers\LED.c</FilePath>
             </File>
             <File>
-              <FileName>pa6_config.c</FileName>
+              <FileName>tim2.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Drivers\pa6_config.c</FilePath>
-            </File>
-            <File>
-              <FileName>pa6_config.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Drivers\pa6_config.h</FilePath>
-            </File>
-            <File>
-              <FileName>tim4.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Drivers\tim4.c</FilePath>
-            </File>
-            <File>
-              <FileName>tim4.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Drivers\tim4.h</FilePath>
-            </File>
-            <File>
-              <FileName>LED.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Drivers\LED.h</FilePath>
+              <FilePath>.\Drivers\tim2.c</FilePath>
             </File>
           </Files>
         </Group>

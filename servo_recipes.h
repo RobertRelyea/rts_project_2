@@ -1,15 +1,12 @@
+/*   
+ *    Contains recipe declarations for demos.
+ */
+
 #ifndef SERVO_RECIPE_H
 #define SERVO_RECIPE_H
 
-#include <stdlib.h>
-#include "Drivers/tim4.h"
+#include "Drivers/tim2.h"
 #include "Drivers/UART.h"
-
-extern int servo1_positions[6];
-extern int servo2_positions[6];
-
-
-
 
 // Define all of the commands that are valid
 #define MOV         (0x20)
@@ -22,92 +19,35 @@ extern int servo2_positions[6];
 
 #define NUM_SERVO_POS (6)
 
-// Examples of simple recipes
-// Note that, because the bottom 5 bits are zeros adding or bitwise or'ing
-// in the values for the bottom 5 bits are equivalent. However, using a bitwise
-// or is better at communicating your purpose.
+extern int servo1_positions[6];
+extern int servo2_positions[6];
+
+/******        Simple Recipes        ******/
+extern unsigned char recipe_verify_moves[];
+extern unsigned char recipe_verify_moves_reverse[];
+
 extern unsigned char recipe1[];
+
 extern unsigned char recipe2[];
 
-// If you set up an array like this then you can easily switch recipes
-// using an additional user input command.
-extern unsigned char *recipes[];
+/******        RECIPE_END test        ******/
+extern unsigned char recipe_continue[];
 
-// This is a good way to define the status of the display.
-// This should be in a header (.h) file.
-enum recipe_status 
-{
-	status_running,
-	status_paused,
-	status_ended,
-	status_command_error,
-	status_nested_error 
-} ;
+/******        Demo recipe        ******/
+extern unsigned char recipe_demo[];
 
-// This is a good way to define the state of a servo motor.
-// This should be in a header (.h) file.
-enum servo_states
-{
-	state_at_position,		// use a separate integer to record the current position (0 through 5) for each servo.
-	state_unknown,
-	state_moving,
-	state_recipe_ended
-};
+/******        Nested loop error recipe        ******/
+extern unsigned char recipe_error_loop[];
 
-// This is a good way to define the event transitions between states.
-// This also should be in a header (.h) file.
-// More events are needed.
-enum events
-{
-	move_left,
-	move_right,
-	pause,
-	resume,
-	begin,
-	recipe_ended,
-	nop
-};
-
-// Struct for managing recipe information
-// r_idx 				->  Index of current recipe step
-// r_move				->  Number of steps required to complete current MOV
-// r_wait 			->  Number of steps required to complete current WAIT
-// r_loop				->  Starting step of current loop
-// r_loop_iter	->  Number of iterations left in current LOOP
-// r_status     ->  Current status of recipe
-typedef struct recipe_t
-{
-	int idx;
-	int move;
-	int wait;
-	int loop;
-	int loop_iter;
-	int length;
-	enum recipe_status status;
-	unsigned char *recipe;
-}recipe_type;
-
-// Struct for managining servo and recipe status
-// servo_positions -> Measured positions for servo
-// servo_position  -> Current position of servo
-// state 					 -> Current state of servo
-// recipe					 -> Recipe struct associated with servo
-typedef struct servo_t
-{
-	int *positions;
-	int position;
-	enum servo_states state;
-	recipe_type recipe;
-	int channel;
-}servo_type;
-
-extern servo_type servo1;
-extern servo_type servo2;
-
-void recipeStep();
-servo_type recipeStepHelper();
-void processInput(enum events one_event, enum events two_event);
-servo_type processEvent( enum events one_event, servo_type servo);
-void initServos();
+/******        Command error recipe        ******/ 
+extern unsigned char recipe_error_mov[];
+    
+/******        Skip command recipe        ******/ 
+extern unsigned char recipe_skip[];
+extern unsigned char recipe_skip_error[];
+    
+/******        Jump command recipe        ******/ 
+extern unsigned char recipe_jump[];
+extern unsigned char recipe_jump_error[];
 
 #endif
