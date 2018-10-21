@@ -18,8 +18,8 @@
 
 void wait()
 {
-	uint32_t start_time = timer4_count();
-	while(get_timer4_elapsed(start_time) < 100){}
+	uint32_t start_time = timer2_count();
+	while(get_timer2_elapsed(start_time) < 100){}
 }
 
 void waitFor(uint32_t ms)
@@ -50,8 +50,12 @@ int main(){
 	
 	UART2_Init();
 	
-  timer4_init();
-	timer4_start();
+  timer2_init();
+	timer2_start();
+	LED_Init();
+	Red_LED_Off();
+	Green_LED_Off();
+
 	
 	initServos();
 	// Place new command indicator
@@ -65,7 +69,7 @@ int main(){
 	while(1)
 	{
 		
-		uint32_t start_time = timer4_count();
+		uint32_t start_time = timer2_count();
 		// Check for user input
 		if(USART_Received(USART2))
 		{
@@ -91,10 +95,32 @@ int main(){
 			}
 		}
 		
+		
+		
+	  switch (servo1.recipe.status)
+		{
+			case status_running:
+				Green_LED_On();
+			  Red_LED_Off();
+				break;
+			case status_paused:
+			  Red_LED_Off();
+			  Green_LED_Off();
+			  break;
+			case status_command_error:
+			  Red_LED_On();
+			  Green_LED_Off();
+			  break;
+			case status_nested_error:
+			  Green_LED_On();
+			  Red_LED_On();
+			  break;
+		}			
 		recipeStep();
 		
-		uint32_t time_elapsed = get_timer4_elapsed(start_time);
+		uint32_t time_elapsed = get_timer2_elapsed(start_time);
 		
 		waitFor(100 - time_elapsed);
 	} 
 }
+

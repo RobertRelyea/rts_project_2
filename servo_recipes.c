@@ -24,10 +24,13 @@ unsigned char recipe2[] = {
 
 unsigned char recipe_jump[] = {
 	MOV+3,
-	JUMP+3,
+  LOOP+2,
+	LOOP+4,
 	WAIT+2,
 	MOV+2,
 	MOV+0,
+	END_LOOP,
+	END_LOOP,
 	RECIPE_END };
 
 unsigned char recipe_demo[] = {
@@ -96,8 +99,8 @@ void initServos()
   servo2.state = state_unknown;
 	
 	// Set servo channels
-	servo1.channel = 1;
-	servo2.channel = 2;
+	servo1.channel = 2;
+	servo2.channel = 3;
 	
 	// Initialize servo recipes
 	recipe_t1.idx = 0;
