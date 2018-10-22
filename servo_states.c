@@ -2,8 +2,8 @@
 
 /******        CHANGE DEMO RECIPES HERE        ******/
 // Variables for conveniently changing demo recipes
-unsigned char *recipe_data1 = recipe_verify_moves;
-unsigned char *recipe_data2 = recipe_verify_moves_reverse;
+unsigned char *recipe_data1 = recipe_jump_error;
+unsigned char *recipe_data2 = recipe_jump;
 
 
 // Declare servo structs
@@ -18,7 +18,7 @@ static servo_type startMove(servo_states new_state, servo_type servo, unsigned c
 {
 	servo.state = new_state;
 	servo.recipe.move = (servo.position > position) ? 
-		((servo.position - position) * 2) : ((position - servo.position) * 2);
+		((servo.position - position) * 2 - 1) : ((position - servo.position) * 2 - 1);
 	servo.position = position;
 	setDuty(servo.channel, servo.positions[position]);
 	return servo;

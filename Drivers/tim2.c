@@ -52,26 +52,26 @@ void timer2_pwm_init()
     // Clear output enable for capture input channel 3
     TIM2->CCER &=	~(TIM_CCER_CC3E);     
 	
-    // Select PWM as mode 1 for PB6 CH1
+    // Select PWM as mode 1 for PA1 CH2
 	TIM2->CCMR1 |= TIM_CCMR1_OC2M_1 | TIM_CCMR1_OC2M_2;   
 	TIM2->CCMR1 &= ~(TIM_CCMR1_OC2M_0);
-    // Select PWM as mode 1 for PB7 CH2
+    // Select PWM as mode 1 for PA2 CH3
 	TIM2->CCMR2 |= TIM_CCMR2_OC3M_1 | TIM_CCMR2_OC3M_2;  
 	TIM2->CCMR2 &= ~(TIM_CCMR2_OC3M_0);
 	
 	// Enable the corresponding preload register by setting the 
-    // OC1PE bit in the TIM4_CCMR1 register
+    // OC2PE bit in the TIM2_CCMR1 register
 	TIM2->CCMR1 |= TIM_CCMR1_OC2PE;  
     // Enable the corresponding preload register by setting the 
-    // OC2PE bit in the TIM4_CCMR1 register
+    // OC3PE bit in the TIM2_CCMR2 register
 	TIM2->CCMR2 |= TIM_CCMR2_OC3PE; 
 	
     // auto-reload preload register
 	TIM2->CR1 |= TIM_CR1_ARPE;       
     
-	// Turn on output enable for capture input channel 1
+	// Turn on output enable for capture input channel 2
 	TIM2->CCER |= TIM_CCER_CC2E;    
-    // Turn on output enable for capture input channel 2
+    // Turn on output enable for capture input channel 3
 	TIM2->CCER |= TIM_CCER_CC3E;   
 	
 	TIM2->CCER &= ~(TIM_CCER_CC2P);  //set to active high

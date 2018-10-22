@@ -44,6 +44,7 @@ int main()
     events user_events[2];
 	uint8_t input_idx = 0;
 	
+    
 	while(1)
 	{
 		// Track time required for UI, state processing, servo commands
